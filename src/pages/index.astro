@@ -1,11 +1,27 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<section class="post-content">
+		<h1 class="font-bold">John Choque</h1>
+		<p class="text-gray-500">Software Engineer and Social Entrepreneur</p>
+		<p class="text-gray-500">Copenhagen, Denmark</p>
+		<p>
+			I am in a continuous journey to learn how to build meaningful tech.
+			I care deeply about AI ethics, data sovereignty, digital inclusion,
+			edTech, and building a post-extractive web.
+		</p>
+		<p>
+			I am currently a Frontend Engineer at
+			{" "}<a
+				href="https://www.livahealthcare.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-blue-900 underline hover:text-blue-950"
+				>Liva Healthcare</a
+			>. Prior to this role, I co-founded multiple organizations and
+			startups, and volunteered with several mission-driven initiatives.
+		</p>
+	</section>
 </Layout>
