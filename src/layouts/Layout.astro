@@ -7,6 +7,17 @@ import "../styles/global.css";
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			(function () {
+				const stored = localStorage.getItem("theme");
+				const prefersDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				if (stored === "dark" || (!stored && prefersDark)) {
+					document.documentElement.classList.add("dark");
+				}
+			})();
+		</script>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
@@ -14,10 +25,27 @@ import "../styles/global.css";
 		<title>Astro Basics</title>
 		<Font cssVariable="--font-geist" preload />
 	</head>
-	<body>
+	<body class="bg-white text-black dark:bg-black dark:text-neutral-300">
 		<main class="max-w-2xl p-8">
+			<!-- <button
+				id="theme-toggle"
+				type="button"
+				class="mb-4 rounded border border-current px-3 py-1 text-sm"
+			>
+				<span class="dark:hidden">Switch to dark</span>
+				<span class="hidden dark:inline">Switch to light</span>
+			</button> -->
 			<slot />
 		</main>
+		<script is:inline>
+			document
+				.getElementById("theme-toggle")
+				?.addEventListener("click", () => {
+					const isDark =
+						document.documentElement.classList.toggle("dark");
+					localStorage.setItem("theme", isDark ? "dark" : "light");
+				});
+		</script>
 	</body>
 </html>
 
