@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const description =
+	"Software Engineer and Social Entrepreneur working on AI ethics, data sovereignty, and a post-extractive web. Also: photos, guitar, and bouldering.";
 ---
 
-<Layout>
+<Layout description={description}>
 	<section class="post-content">
 		<h1 class="font-bold">John Choque</h1>
 		<p class="text-gray-400">Software Engineer and Social Entrepreneur</p>
@@ -25,6 +28,19 @@ import Layout from "../layouts/Layout.astro";
 		<p>
 			Beyond work, I like to travel and take photos, play the guitar, and
 			do bouldering.
+		</p>
+		<p>
+			<a
+				href="/photos/"
+				class="text-blue-900 underline hover:text-blue-950 dark:text-orange-300 dark:hover:text-orange-200"
+				>Photos</a
+			>
+			·
+			<a
+				href="/albums/"
+				class="text-blue-900 underline hover:text-blue-950 dark:text-orange-300 dark:hover:text-orange-200"
+				>Albums</a
+			>
 		</p>
 	</section>
 </Layout>

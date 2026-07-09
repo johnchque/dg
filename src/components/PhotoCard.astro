@@ -1,0 +1,54 @@
+---
+import { getResponsiveImageAttributes } from "@imagekit/javascript";
+
+interface Props {
+	src: string;
+	alt: string;
+	caption?: string;
+	width: number;
+	height: number;
+	priority?: boolean;
+}
+
+const { src, alt, caption, width, height, priority } = Astro.props;
+
+const urlEndpoint = import.meta.env.IMAGEKIT_URL_ENDPOINT;
+
+// The layout's <main> caps out at max-w-2xl (42rem / 672px), so photos never
+// render wider than that — these are the breakpoints worth generating.
+const {
+	src: imgSrc,
+	srcSet,
+	sizes,
+} = getResponsiveImageAttributes({
+	src,
+	urlEndpoint,
+	sizes: "(min-width: 42rem) 42rem, 100vw",
+	deviceBreakpoints: [640, 828, 1080, 1280],
+	imageBreakpoints: [],
+});
+
+const priorityAttrs = priority
+	? { loading: "eager" as const, decoding: "sync" as const, fetchpriority: "high" as const }
+	: { loading: "lazy" as const, decoding: "async" as const };
+---
+
+<figure class="mb-10">
+	<img
+		src={imgSrc}
+		srcset={srcSet}
+		sizes={sizes}
+		width={width}
+		height={height}
+		alt={alt}
+		{...priorityAttrs}
+		class="w-full h-auto rounded"
+	/>
+	{
+		caption && (
+			<figcaption class="mt-2 text-sm text-gray-400">
+				{caption}
+			</figcaption>
+		)
+	}
+</figure>
