@@ -4,6 +4,12 @@
 
 @theme inline {
     --font-sans: var(--font-geist);
+    --color-charcoal: #111111;
+    --color-mist: #e5e7e8;
+    --color-evening: #1f5299;
+    --color-evening-dark: #163d73;
+    --color-sunset: #c98f65;
+    --color-sunset-light: #d9a679;
 }
 
 @layer base {

@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import PhotoCard from "../../components/PhotoCard.astro";
 import { ogImageUrl } from "../../lib/imagekit";
 
 export async function getStaticPaths() {
@@ -13,9 +12,9 @@ export async function getStaticPaths() {
 }
 
 const { album } = Astro.props;
-const { Content } = await render(album);
+const { Content, remarkPluginFrontmatter } = await render(album);
 
-const firstPhoto = album.data.photos[0];
+const firstPhoto = remarkPluginFrontmatter.photos?.[0];
 const ogImage = firstPhoto ? ogImageUrl(firstPhoto.path) : undefined;
 ---
 
@@ -25,19 +24,7 @@ const ogImage = firstPhoto ? ogImageUrl(firstPhoto.path) : undefined;
 	image={ogImage}
 >
 	<h1 class="font-bold text-xl mb-4">{album.data.title}</h1>
-	<div class="post-content mb-8">
+	<div class="post-content">
 		<Content />
 	</div>
-	{
-		album.data.photos.map((photo, index) => (
-			<PhotoCard
-				src={photo.path}
-				alt={photo.alt}
-				caption={photo.caption}
-				width={photo.width}
-				height={photo.height}
-				priority={index === 0}
-			/>
-		))
-	}
 </Layout>

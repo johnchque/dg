@@ -1,0 +1,74 @@
+---
+// Vertical sliding text rotator. `frames` repeats the first role at the end
+// so the loop-back from the last frame to the first is visually seamless
+// (identical text, so the instant reset is imperceptible). Keyframe stops
+// are generated from the role count, so any number of roles stays in sync
+// (each gets its own even slot instead of hand-tuned percentages).
+interface Props {
+	roles: string[];
+}
+
+const { roles } = Astro.props;
+const frames = [...roles, roles[0]];
+const lineHeight = 1.5; // rem, matches the site's default leading
+const frameCount = frames.length;
+const holdFraction = 0.8; // fraction of each slot spent holding before sliding
+const secondsPerFrame = 2;
+
+const stops: { pct: number; y: number }[] = [];
+for (let i = 0; i < frameCount; i++) {
+	const slotStart = (i / frameCount) * 100;
+	const slotEnd = ((i + 1) / frameCount) * 100;
+	const holdEnd = slotStart + (slotEnd - slotStart) * holdFraction;
+	const y = -(i * lineHeight);
+	stops.push({ pct: slotStart, y });
+	stops.push({ pct: holdEnd, y });
+	if (i < frameCount - 1) {
+		stops.push({ pct: slotEnd, y: -((i + 1) * lineHeight) });
+	}
+}
+stops.push({ pct: 100, y: -((frameCount - 1) * lineHeight) });
+
+const keyframesCss = `@keyframes role-slide {\n${stops
+	.map((s) => `\t${s.pct.toFixed(4)}% { transform: translateY(${s.y}rem); }`)
+	.join("\n")}\n}`;
+---
+
+<div class="role-rotator" aria-hidden="true">
+	<div
+		class="role-rotator__track"
+		style={`animation-duration: ${frameCount * secondsPerFrame}s`}
+	>
+		{frames.map((role) => <span class="role-rotator__frame">{role}</span>)}
+	</div>
+</div>
+<span class="sr-only">{roles.join(", ")}</span>
+
+<style>
+	.role-rotator {
+		overflow: hidden;
+		height: 1.5rem;
+		opacity: 0.7;
+	}
+
+	.role-rotator__track {
+		display: flex;
+		flex-direction: column;
+		animation-name: role-slide;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+	}
+
+	.role-rotator__frame {
+		display: block;
+		height: 1.5rem;
+		line-height: 1.5rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.role-rotator__track {
+			animation: none;
+		}
+	}
+</style>
+<style set:html={keyframesCss} />
