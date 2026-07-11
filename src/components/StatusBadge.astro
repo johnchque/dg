@@ -1,0 +1,40 @@
+---
+interface Props {
+	status: "seedling" | "budding" | "evergreen";
+	showLabel?: boolean;
+}
+
+const { status, showLabel = true } = Astro.props;
+
+const labels: Record<Props["status"], string> = {
+	seedling: "Seedling",
+	budding: "Budding",
+	evergreen: "Evergreen",
+};
+
+const titles: Record<Props["status"], string> = {
+	seedling: "An early, rough idea — likely to change a lot.",
+	budding: "Has some structure, but still growing.",
+	evergreen: "Mature and actively maintained.",
+};
+
+// Remixicon (Others category): leaf-line, seedling-line (single sprout), plant-line.
+const icons: Record<Props["status"], string> = {
+	seedling:
+		"M20.998 3V5C20.998 14.6274 15.6255 19 8.99805 19L7.0964 18.9999C7.3079 15.9876 8.24541 14.1648 10.6939 11.9989C11.8979 10.9338 11.7965 10.3189 11.2029 10.6721C7.1193 13.1016 5.09114 16.3862 5.00119 21.6302L4.99805 22H2.99805C2.99805 20.6373 3.11376 19.3997 3.34381 18.2682C3.1133 16.9741 2.99805 15.2176 2.99805 13C2.99805 7.47715 7.4752 3 12.998 3C14.998 3 16.998 4 20.998 3Z",
+	budding:
+		"M21.998 7V9.5C21.998 13.0899 19.0879 16 15.498 16H12.998V21H10.998V14L11.0169 13.0007C11.2719 9.64413 14.0762 7 17.498 7H21.998ZM5.99805 3C9.0904 3 11.7144 5.00519 12.6408 7.78626C11.1417 9.06119 10.1516 10.9143 10.0144 13.0004L8.99805 13C5.13205 13 1.99805 9.86599 1.99805 6V3H5.99805Z",
+	evergreen:
+		"M20.998 3V5C20.998 8.86599 17.864 12 13.998 12H12.998V13H17.998V20C17.998 21.1046 17.1026 22 15.998 22H7.99805C6.89348 22 5.99805 21.1046 5.99805 20V13H10.998V10C10.998 6.13401 14.1321 3 17.998 3H20.998ZM5.49805 2C8.02667 2 10.263 3.25136 11.6216 5.1686C10.6026 6.51084 9.99805 8.18482 9.99805 10V11H9.49805C5.35591 11 1.99805 7.64214 1.99805 3.5V2H5.49805Z",
+};
+---
+
+<span
+	class="inline-flex align-middle items-center gap-1 text-sm opacity-70"
+	title={titles[status]}
+>
+	<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+		<path d={icons[status]}></path>
+	</svg>
+	{showLabel && labels[status]}
+</span>

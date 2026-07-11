@@ -160,6 +160,45 @@ favicon) are unaffected either way.
   different rendering pipelines. Keep both in sync by hand if the visual
   design changes.
 
+## Essays & explorations
+
+Two more content collections alongside `albums`, same plain-Markdown,
+Obsidian-editable model. Both share a `gardenSchema` in
+`src/content.config.ts`:
+
+```ts
+{
+  title: string,
+  date: coerce.date(),
+  updated: coerce.date().optional(),
+  status: enum(["seedling", "budding", "evergreen"]).default("seedling"),
+  description: string.optional(),
+}
+```
+
+- **Essays** (`src/content/essays/`, `/essays/`) — opinion/belief writing:
+  "what I think about X."
+- **Explorations** (`src/content/explorations/`, `/explorations/`) —
+  learning writeups: a comprehensive dig into one topic while still
+  learning it. Named "Explorations" rather than "Deep Dives" — softer,
+  fits the digital-garden framing better ("still exploring this") than a
+  term that implies a finished report.
+- **`status`** is the digital-garden growth-stage convention (seedling →
+  budding → evergreen), rendered via `StatusBadge.astro` on both the list
+  and detail pages. The point: these are meant to be published
+  **unfinished** and rewritten in place, not held back until "done" — the
+  badge sets that expectation for readers instead of hiding it.
+- Both collections' directories are currently empty (no content written
+  yet); `astro build` handles an empty `glob()` collection fine (warns,
+  doesn't error) — confirmed directly, not assumed.
+- Pages mirror the `albums` structure exactly (`index.astro` listing
+  sorted by `date` descending, `[slug].astro` rendering `<Content />`) —
+  no photo-embedding logic needed here, but `rehype-photos.ts` still runs
+  against their Markdown too since it's registered globally in
+  `astro.config.mjs`, not scoped to `albums`. An image embedded in an
+  essay/exploration would go through the same `?width=&height=` pipeline
+  as an album photo.
+
 ## TypeScript & tooling
 
 - `typescript` was **not installed at all** until this was caught — the
@@ -221,18 +260,15 @@ respects `prefers-reduced-motion`.
   cell (`col-start-1 row-start-1`) — fixes a real visual misalignment that
   showed up when relying on inline-element baseline positioning instead.
 
-### `RoleRotator.astro`
+### Header subtitle (formerly `RoleRotator.astro`)
 
-Vertical sliding text rotator for the roles under the name in the header
-(e.g. "Software Engineer" → "Social Entrepreneur" → "Photographer"). Pure
-CSS `@keyframes translateY`, no JS. The frame list repeats the first role
-at the end so the loop-back is visually seamless (identical text, so the
-instant reset when the animation restarts is imperceptible). Keyframe
-percentages are **generated from the role count** (not hand-tuned), so
-adding/removing roles doesn't silently break the animation — this was a
-real bug found and fixed: hand-tuned percentages for 2 roles silently
-dropped a 4th role when the list grew, with no error. Respects
-`prefers-reduced-motion`.
+The header originally had a `RoleRotator.astro` component: a pure-CSS
+vertical sliding text rotator cycling through roles under the name. Removed
+by request in favor of a single static line (`<p class="opacity-70">`) —
+simpler, no animation to tune, no risk of the keyframe-generation bug it
+used to have (hand-tuned percentages once silently dropped a role when the
+list grew past what they were built for). The component file was deleted
+since nothing else referenced it.
 
 ## SEO & performance
 
@@ -288,3 +324,6 @@ tested, and explicitly rejected by the user, not just discussed:
 - `typescript` pinned below latest (`5.9.3`, not `7.x`) until
   `@astrojs/check`/`@astrojs/language-server` support the new native
   compiler.
+- Header `<nav>` still has the `Photos`/`Albums` links commented out (no
+  visible nav to those pages, or to the new `/essays`/`/explorations`,
+  exists anywhere on the site right now) — flagged, not yet decided.

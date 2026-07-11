@@ -1,0 +1,38 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+import { formatDate, type GardenEntry } from "../lib/garden";
+
+interface Props {
+	entries: GardenEntry[];
+}
+
+const { entries } = Astro.props;
+
+const byYear = new Map<number, GardenEntry[]>();
+for (const entry of entries) {
+	const year = entry.updatedAt.getFullYear();
+	byYear.set(year, [...(byYear.get(year) ?? []), entry]);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+{
+	years.map((year) => (
+		<section class="mb-3">
+			<h3 class="mb-1 text-sm opacity-60">{year}</h3>
+			<ul class="list-none">
+				{byYear.get(year)!.map((entry) => (
+					<li class="flex items-center gap-4 border-b border-black/10 py-3 dark:border-white/10">
+						<a href={entry.href} class="link flex-1">
+							{entry.title}
+						</a>
+						<StatusBadge status={entry.status} showLabel={false} />
+						<span class="shrink-0 text-sm tabular-nums opacity-60">
+							{formatDate(entry.updatedAt, false)}
+						</span>
+					</li>
+				))}
+			</ul>
+		</section>
+	))
+}

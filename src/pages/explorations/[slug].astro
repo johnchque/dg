@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import StatusBadge from "../../components/StatusBadge.astro";
+import GardenMeta from "../../components/GardenMeta.astro";
+
+export async function getStaticPaths() {
+	const explorations = await getCollection("explorations");
+	return explorations.map((exploration) => ({
+		params: { slug: exploration.id },
+		props: { exploration },
+	}));
+}
+
+const { exploration } = Astro.props;
+const { Content } = await render(exploration);
+---
+
+<Layout
+	title={exploration.data.title}
+	description={exploration.data.description ??
+		`An exploration: ${exploration.data.title}.`}
+>
+	<h1 class="mb-2">{exploration.data.title}</h1>
+	<div class="mb-6">
+		<StatusBadge status={exploration.data.status} />
+	</div>
+	<div class="post-content">
+		<Content />
+	</div>
+	<GardenMeta
+		createdAt={exploration.data.createdAt}
+		updatedAt={exploration.data.updatedAt}
+	/>
+</Layout>

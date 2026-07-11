@@ -36,4 +36,28 @@
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
     }
+
+    .link {
+        color: var(--color-evening);
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-color: color-mix(in oklab, var(--color-evening) 40%, transparent);
+        transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    .link:hover {
+        color: var(--color-evening-dark);
+        text-decoration-color: currentColor;
+    }
+
+    html.dark .link {
+        color: var(--color-sunset);
+        text-decoration-color: color-mix(in oklab, var(--color-sunset) 40%, transparent);
+    }
+
+    html.dark .link:hover {
+        color: var(--color-sunset-light);
+        text-decoration-color: currentColor;
+    }
 }

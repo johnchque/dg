@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import GardenList from "../components/GardenList.astro";
+import { getGardenEntries } from "../lib/garden";
 
 const description =
 	"Software Engineer and Social Entrepreneur working on AI ethics, data sovereignty, and a post-extractive web. Also: photos, guitar, and bouldering.";
+
+const gardenEntries = (await getGardenEntries()).slice(0, 10);
 ---
 
 <Layout description={description}>
@@ -20,8 +24,7 @@ const description =
 				href="https://www.livahealthcare.com/"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-evening underline hover:text-evening-dark dark:text-sunset dark:hover:text-sunset-light"
-				>Liva Healthcare</a
+				class="link">Liva Healthcare</a
 			>. Prior to this role, I co-founded multiple organizations and
 			startups, and volunteered with several mission-driven initiatives.
 		</p>
@@ -29,5 +32,13 @@ const description =
 			Beyond work, I like to travel and take photos, play the guitar, and
 			do bouldering.
 		</p> -->
+	</section>
+
+	<section class="mt-10">
+		<h2 class="mb-2">Garden</h2>
+		<GardenList entries={gardenEntries} />
+		<a href="/garden/" class="link inline-block">
+			See the whole garden →
+		</a>
 	</section>
 </Layout>

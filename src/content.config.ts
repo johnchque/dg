@@ -10,4 +10,22 @@ const albums = defineCollection({
 	}),
 });
 
-export const collections = { albums };
+const gardenSchema = z.object({
+	title: z.string(),
+	createdAt: z.coerce.date(),
+	updatedAt: z.coerce.date(),
+	status: z.enum(["seedling", "budding", "evergreen"]).default("seedling"),
+	description: z.string().optional(),
+});
+
+const essays = defineCollection({
+	loader: glob({ pattern: "**/*.md", base: "./src/content/essays" }),
+	schema: gardenSchema,
+});
+
+const explorations = defineCollection({
+	loader: glob({ pattern: "**/*.md", base: "./src/content/explorations" }),
+	schema: gardenSchema,
+});
+
+export const collections = { albums, essays, explorations };

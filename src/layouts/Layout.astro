@@ -1,6 +1,5 @@
 ---
 import { Font } from "astro:assets";
-import RoleRotator from "../components/RoleRotator.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -68,13 +67,7 @@ const ogImageURL = new URL(image, Astro.site);
 		>
 			<div>
 				<a href="/">John Choque</a>
-				<RoleRotator
-					roles={[
-						"Software Engineer",
-						"Social Entrepreneur",
-						"Photographer",
-					]}
-				/>
+				<p class="opacity-70">Social Entrepreneur</p>
 			</div>
 			<nav class="flex flex-col items-end gap-1">
 				<!-- <a
