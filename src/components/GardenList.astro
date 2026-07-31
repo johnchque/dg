@@ -19,15 +19,17 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
 {
 	years.map((year) => (
 		<section class="mb-3">
-			<h3 class="mb-1 text-sm opacity-60">{year}</h3>
+			<h3 class="mb-1 text-sm text-muted dark:text-muted-dark">{year}</h3>
 			<ul class="list-none">
 				{byYear.get(year)!.map((entry) => (
 					<li class="flex items-center gap-4 border-b border-black/10 py-3 dark:border-white/10">
 						<a href={entry.href} class="link flex-1">
 							{entry.title}
 						</a>
-						<StatusBadge status={entry.status} showLabel={false} />
-						<span class="shrink-0 text-sm tabular-nums opacity-60">
+						<span class="text-muted dark:text-muted-dark">
+							<StatusBadge status={entry.status} showLabel={false} />
+						</span>
+						<span class="shrink-0 text-sm tabular-nums text-muted dark:text-muted-dark">
 							{formatDate(entry.updatedAt, false)}
 						</span>
 					</li>

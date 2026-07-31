@@ -1,12 +1,14 @@
 ---
 import { formatDate } from "../lib/garden";
+import StatusBadge from "./StatusBadge.astro";
 
 interface Props {
+	status: "seedling" | "budding" | "evergreen";
 	createdAt: Date;
 	updatedAt: Date;
 }
 
-const { createdAt, updatedAt } = Astro.props;
+const { status, createdAt, updatedAt } = Astro.props;
 
 // Remixicon: calendar-line, history-line.
 const icons = {
@@ -16,8 +18,9 @@ const icons = {
 ---
 
 <footer
-	class="mt-10 flex flex-wrap gap-x-6 gap-y-1 border-t border-black/10 pt-4 text-sm opacity-60 dark:border-white/10"
+	class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-black/10 pt-4 text-sm text-muted dark:border-white/10 dark:text-muted-dark"
 >
+	<StatusBadge status={status} />
 	<span class="inline-flex items-center gap-1.5">
 		<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 			<path d={icons.planted}></path>

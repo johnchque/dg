@@ -23,7 +23,7 @@ const ogImage = firstPhoto ? ogImageUrl(firstPhoto.path) : undefined;
 	description={`Photos from ${album.data.title}.`}
 	image={ogImage}
 >
-	<h1 class="text-xl mb-4">{album.data.title}</h1>
+	<h1 class="mb-4">{album.data.title}</h1>
 	<div class="post-content">
 		<Content />
 	</div>

@@ -36,7 +36,7 @@ const ogImage = photos[0] ? ogImageUrl(photos[0].path) : undefined;
 	description="A chronological stream of photos from my albums."
 	image={ogImage}
 >
-	<h1 class="font-bold text-xl mb-6">Photos</h1>
+	<h1 class="mb-6">Photos</h1>
 	{
 		photos.map((photo, index) => (
 			<PhotoCard

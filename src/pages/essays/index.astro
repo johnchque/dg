@@ -11,7 +11,7 @@ essays.sort((a, b) => b.data.updatedAt.valueOf() - a.data.updatedAt.valueOf());
 	title="Essays"
 	description="Writing about what I believe, published as it develops."
 >
-	<h1 class="font-bold text-xl mb-6">Essays</h1>
+	<h1 class="mb-6">Essays</h1>
 	<ul class="list-none space-y-3">
 		{
 			essays.map((essay) => (
@@ -22,7 +22,7 @@ essays.sort((a, b) => b.data.updatedAt.valueOf() - a.data.updatedAt.valueOf());
 					>
 						{essay.data.title}
 					</a>
-					<span class="ml-2">
+					<span class="ml-2 text-muted dark:text-muted-dark">
 						<StatusBadge status={essay.data.status} />
 					</span>
 				</li>

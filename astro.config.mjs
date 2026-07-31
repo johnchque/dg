@@ -22,10 +22,17 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: 'Geist',
-      cssVariable: '--font-geist',
+      name: 'Open Sans',
+      cssVariable: '--font-open-sans',
       provider: fontProviders.google(),
       weights: [400, 700],
+      styles: ['normal']
+    },
+    {
+      name: 'Literata',
+      cssVariable: '--font-literata',
+      provider: fontProviders.google(),
+      weights: [400],
       styles: ['normal']
     }
   ]

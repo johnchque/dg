@@ -14,11 +14,11 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
 ---
 
 <Layout title="Albums" description="Photo albums, organized by year.">
-	<h1 class="font-bold text-xl mb-6">Albums</h1>
+	<h1 class="mb-6">Albums</h1>
 	{
 		years.map((year) => (
 			<section class="mb-6">
-				<h2 class="font-bold mb-2">{year}</h2>
+				<h2 class="mb-2">{year}</h2>
 				<ul class="list-none space-y-1">
 					{byYear.get(year)!.map((album) => (
 						<li>

@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import StatusBadge from "../../components/StatusBadge.astro";
 import GardenMeta from "../../components/GardenMeta.astro";
 
 export async function getStaticPaths() {
@@ -21,13 +20,11 @@ const { Content } = await render(essay);
 	description={essay.data.description ?? `An essay: ${essay.data.title}.`}
 >
 	<h1 class="mb-2">{essay.data.title}</h1>
-	<div class="mb-6">
-		<StatusBadge status={essay.data.status} />
-	</div>
 	<div class="post-content">
 		<Content />
 	</div>
 	<GardenMeta
+		status={essay.data.status}
 		createdAt={essay.data.createdAt}
 		updatedAt={essay.data.updatedAt}
 	/>

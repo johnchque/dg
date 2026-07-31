@@ -57,17 +57,18 @@ const ogImageURL = new URL(image, Astro.site);
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
 
-		<Font cssVariable="--font-geist" preload />
+		<Font cssVariable="--font-open-sans" preload />
+		<Font cssVariable="--font-literata" preload />
 	</head>
 	<body
-		class="bg-mist text-black transition-colors duration-700 ease-in-out dark:bg-charcoal dark:text-white"
+		class="bg-mist text-ink transition-colors duration-700 ease-in-out dark:bg-charcoal dark:text-white"
 	>
 		<header
 			class="fixed inset-x-0 top-0 z-10 flex max-w-4xl items-start justify-between p-4 text-white mix-blend-difference md:p-6 lg:p-8"
 		>
 			<div>
 				<a href="/">John Choque</a>
-				<p class="opacity-70">Social Entrepreneur</p>
+				<p class="opacity-70">Building meaninfgul tech</p>
 			</div>
 			<nav class="flex flex-col items-end gap-1">
 				<!-- <a
