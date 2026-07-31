@@ -23,10 +23,10 @@ const years = [...byYear.keys()].sort((a, b) => b - a);
 			<ul class="list-none">
 				{byYear.get(year)!.map((entry) => (
 					<li class="flex items-center gap-4 border-b border-black/10 py-3 dark:border-white/10">
-						<a href={entry.href} class="link flex-1">
+						<a href={entry.href} class="link">
 							{entry.title}
 						</a>
-						<span class="text-muted dark:text-muted-dark">
+						<span class="ml-auto text-muted dark:text-muted-dark">
 							<StatusBadge status={entry.status} showLabel={false} />
 						</span>
 						<span class="shrink-0 text-sm tabular-nums text-muted dark:text-muted-dark">
