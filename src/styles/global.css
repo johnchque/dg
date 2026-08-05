@@ -5,13 +5,14 @@
 @theme inline {
     --font-sans: var(--font-open-sans);
     --font-serif: var(--font-literata);
-    --color-charcoal: #111111;
-    --color-mist: #fcfcfc;
-    --color-ink: #1b1b1b;
-    --color-evening: #2d5c85;
+    --color-charcoal: #161616;
+    --color-mist: #f6f6f6;
+    --color-ink: #0f0f0f;
+    --color-chalk: #f3f3f3;
+    --color-evening: #a8531f;
     --color-sunset: #d6a67c;
-    --color-muted: #57606a;
-    --color-muted-dark: #9ca3af;
+    --color-muted: #4f4f4f;
+    --color-muted-dark: #b9b9b9;
 }
 
 @layer base {
@@ -45,22 +46,30 @@
     }
 
     h1 {
-        font-size: 1.375rem;
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 1.1875rem;
+        font-size: 1.5rem;
     }
 
     h3,
     h4,
     h5,
     h6 {
-        font-size: 1.0625rem;
+        font-size: 1.1875rem;
     }
 
     .post-content > * + * {
         margin-block-start: 1em;
+    }
+
+    .post-content p {
+        color: var(--color-muted);
+    }
+
+    html.dark .post-content p {
+        color: var(--color-muted-dark);
     }
 
     a[target="_blank"]::after {
