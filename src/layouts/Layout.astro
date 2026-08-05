@@ -63,12 +63,17 @@ const ogImageURL = new URL(image, Astro.site);
 	<body
 		class="bg-mist text-ink transition-colors duration-700 ease-in-out dark:bg-charcoal dark:text-chalk"
 	>
+		<div
+			aria-hidden="true"
+			class="pointer-events-none fixed inset-x-0 top-0 z-10 h-28 bg-[linear-gradient(to_bottom,var(--color-mist)_0%,var(--color-mist)_12%,color-mix(in_srgb,var(--color-mist)_55%,transparent)_45%,color-mix(in_srgb,var(--color-mist)_15%,transparent)_75%,transparent_100%)] md:h-32 dark:bg-[linear-gradient(to_bottom,var(--color-charcoal)_0%,var(--color-charcoal)_12%,color-mix(in_srgb,var(--color-charcoal)_55%,transparent)_45%,color-mix(in_srgb,var(--color-charcoal)_15%,transparent)_75%,transparent_100%)]"
+		>
+		</div>
 		<header
-			class="fixed inset-x-0 top-0 z-10 flex max-w-4xl items-start justify-between p-4 text-white mix-blend-difference md:p-6 lg:p-8"
+			class="fixed inset-x-0 top-0 z-10 flex max-w-4xl items-start justify-between p-4 md:p-6 lg:p-8"
 		>
 			<div>
 				<a href="/">John Choque</a>
-				<p class="opacity-70">Building meaninfgul tech</p>
+				<p class="text-muted dark:text-muted-dark">Building meaninfgul tech</p>
 			</div>
 			<nav class="flex flex-col items-end gap-1">
 				<!-- <a
