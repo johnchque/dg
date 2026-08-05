@@ -1,0 +1,26 @@
+What can we do to make the design of the frontpage to be more like https://entire.io/blog/entire-dispatch-0x0018 
+Make a plan before making changes, I think more of colors and fonts. Maybe layout but should be a minimal change compare to the current implementation.
+
+---
+
+Let's try all of them
+
+---
+
+I like their background color for both light and dark. Also, the titles are bigger I guess no?
+
+---
+
+What about the font color
+
+---
+
+#b9b9b9 isn't this the text color?
+
+---
+
+Good, I think I liked the Literate headers, actually
+
+---
+
+I feel that the body color in light mode is a bit too light. The font can be a bit darker. Not the links, just the body font color
