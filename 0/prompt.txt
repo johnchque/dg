@@ -1,0 +1,102 @@
+What can we do to make the design of the frontpage to be more like https://entire.io/blog/entire-dispatch-0x0018 
+Make a plan before making changes, I think more of colors and fonts. Maybe layout but should be a minimal change compare to the current implementation.
+
+---
+
+Let's try all of them
+
+---
+
+I like their background color for both light and dark. Also, the titles are bigger I guess no?
+
+---
+
+What about the font color
+
+---
+
+#b9b9b9 isn't this the text color?
+
+---
+
+Good, I think I liked the Literate headers, actually
+
+---
+
+I feel that the body color in light mode is a bit too light. The font can be a bit darker. Not the links, just the body font color
+
+---
+
+What is a nice thing or a good practice from the entire io blog that we can take?
+
+---
+
+Something else?
+
+---
+
+What size for the header fonts is good and goes well of how the site currently looks?
+
+---
+
+Can we somehow then unify the accent color that looks good for both dark and light theme?
+
+---
+
+Hmm it looks too strong on dark theme, that's why I liked the washed out one
+
+---
+
+The hover of the theme switcher in the light theme is not the accent color we have for the links
+
+---
+
+Can you check that the hover link color for the light theme is correct? It looks a bit blueish or maybe it is just me
+
+---
+
+I think I don't want the header to be with that css style that changes based on the contrast. At least it makes the selection in light theme to be different to what the other selection of the text is. It just looks bad
+
+---
+
+Cool, what is another effect I can add? I saw once a blur in fade on top. Maybe that?
+
+---
+
+Check on the internet how bad would the impact on performance be on mobile?
+
+---
+
+Let's give it a try
+
+---
+
+Cool, we can set the values a bit lower or higher in order to improve performance. Give it a try
+
+---
+
+That would give a better performance right?
+
+---
+
+Is there a better way or a more performant way?
+
+---
+
+Try removing the backdrop-filter
+
+---
+
+Not bad but the fade is too quick, like it is white fully until the middle of the header text and then the fades is very quick and you can see the white part
+
+---
+
+Looks good, this is good peformant right?
+
+---
+
+Good stuff. Now the second text below my name should not be based on opacity right? Rather the same muted color
+
+---
+
+Is there any way to make the theme switch not to be so sudden on the faded part? The rest of the page fades slowly but that part switches very fast.
