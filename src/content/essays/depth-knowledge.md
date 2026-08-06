@@ -2,7 +2,7 @@
 title: "It's about the depth of knowledge"
 createdAt: 2026-07-11
 updatedAt: 2026-07-11
-status: "seedling"
+status: "evergreen"
 description: "On choosing to host my own writing and photos instead of renting space from a platform."
 ---
 

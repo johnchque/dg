@@ -2,7 +2,7 @@
 title: "A blurry past"
 createdAt: 2021-07-11
 updatedAt: 2-07-11
-status: "seedling"
+status: "evergreen"
 description: "On choosing to host my own writing and photos instead of renting space from a platform."
 ---
 
