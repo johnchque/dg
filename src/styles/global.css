@@ -5,6 +5,7 @@
 @theme inline {
     --font-sans: var(--font-open-sans);
     --font-serif: var(--font-literata);
+    --font-handwriting: var(--font-reenie-beanie);
     --color-charcoal: #161616;
     --color-mist: #f6f6f6;
     --color-ink: #0f0f0f;

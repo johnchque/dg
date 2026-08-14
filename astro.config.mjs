@@ -34,6 +34,13 @@ export default defineConfig({
       provider: fontProviders.google(),
       weights: [400],
       styles: ['normal']
+    },
+    {
+      name: 'Reenie Beanie',
+      cssVariable: '--font-reenie-beanie',
+      provider: fontProviders.google(),
+      weights: [400],
+      styles: ['normal']
     }
   ]
 });
