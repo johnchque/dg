@@ -1,0 +1,41 @@
+https://jib.design/?ref=deadsimplesites
+
+De
+
+---
+
+https://jib.design/?ref=deadsimplesites
+
+How did this website has a nice effect for swtiching between light and dark theme? I would imagine is JS based but maybe CSS?
+
+---
+
+Yes, let's do it!
+
+---
+
+Yeah, this works good BUT, would this affect performance or be too performance heavy? If so, can we make it lighter somehow? Make a plan before changing code.
+
+---
+
+OK, the previous version looked a bit better. Is there something we can do to make it look a bit smoother but also very performant? Maybe a fade or so?
+
+---
+
+Hmm OK, I don't like it. Let's do the one that is a bit heavier instead then.
+
+---
+
+OK, can we make the effect a bit faster?
+
+---
+
+Too fast
+
+---
+
+Hmm change it to the first version you implemented
+
+---
+
+Would that be a problem for mobile phones? If so, can we change any value to make it more smooth?
