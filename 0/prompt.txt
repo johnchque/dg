@@ -1,0 +1,128 @@
+Can you make the background to be #0f0f0f?
+
+---
+
+/login
+
+---
+
+Can the font family be this instead? Is this one nicer? Or maybe just add apple font in the beginning? Not sure
+
+font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+Give me a plan
+
+---
+
+No, but it should be apple first, then the body font we had before.
+
+---
+
+Can you remove the fade in/out when clicking the dark/ligth theme switch? It can be straight changing without any effect
+
+---
+
+Actually, keep the fade. Put it back
+
+---
+
+My name on left top should be the link color
+
+---
+
+How can I make the index be more personal? Like be unique, different, mine?
+
+I used to make videos of my trips, just simple music and static shots. Maybe that playing over and over on the index?
+
+Or maybe something different? Maybe other ideas?
+
+Check on the knowledge base of Claude what you know about me
+
+---
+
+I believe that there is something I need to do. I live in Denmark so this place is more about your work showing what you can do than just rather words. What are some kind of things that are worth showing that align with my index description? Help me figure it out. Ask me questions if needed
+
+---
+
+I have a project I made for myself called Wombat. It was an MCP gateway that added unix like permissions to the tools of mcps. I also made an Europe Rail MCP with OSDP.
+
+I did my master thesis on responsible AI.
+
+I want my website to showcase who I am, not with a specific audience
+
+---
+
+What about master thesis?
+
+---
+
+How can I make the font to be this color?
+
+rgba(255, 255, 255, 0.56)
+
+The body color. BUT not with transparency and rather HEX
+
+---
+
+No, I want the body to be this color: 969696
+
+---
+
+Should I make a carousel of images on the index of my photos?
+
+---
+
+I like this website:
+
+https://szymonkaliski.com/
+
+---
+
+I like the design and how the notes are: https://szymonkaliski.com/notes/simulator/
+
+---
+
+How did this website made the blur behind the navbar? Check the code and find me how it was done, looks pretty performant: https://jrhu.me/
+
+---
+
+Use the technique of this website.
+
+---
+
+Looks great but it is inverted. Invert the CSS order. The blur is on the lower rather than the top most div
+
+---
+
+Looks amazing! But somehow there is a small gap of not blurred part on top. What could be the problem? Check the final markup if needed
+
+---
+
+Hmm not it looks a bit too big in height no? Can you replicate the height of the one from that website I showed you?
+
+---
+
+Still looks very big. Check the CSS of that website again if needed and update my website
+
+---
+
+The height of the fade is too much, check again you are getting the height right
+
+---
+
+No, undo, no js
+
+---
+
+These are the CSS, what is wrong? Why is this height smaller?
+
+<div style="position: relative; width: 100%; height: 100%; border-radius: 0px; overflow: hidden; background: none;"><div style="position: absolute; inset: 0px; z-index: 1; pointer-events: none; backdrop-filter: blur(0.078125px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 25%, rgba(0, 0, 0, 0) 37.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 2; pointer-events: none; backdrop-filter: blur(0.15625px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 37.5%, rgba(0, 0, 0, 0) 50%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 3; pointer-events: none; backdrop-filter: blur(0.3125px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgb(0, 0, 0) 37.5%, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 62.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 4; pointer-events: none; backdrop-filter: blur(0.625px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 62.5%, rgba(0, 0, 0, 0) 75%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 5; pointer-events: none; backdrop-filter: blur(1.25px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 62.5%, rgb(0, 0, 0) 75%, rgba(0, 0, 0, 0) 87.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 6; pointer-events: none; backdrop-filter: blur(2.5px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgb(0, 0, 0) 75%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 7; pointer-events: none; backdrop-filter: blur(5px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgb(0, 0, 0) 87.5%, rgb(0, 0, 0) 100%, rgba(0, 0, 0, 0) 112.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 8; pointer-events: none; backdrop-filter: blur(10px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgb(0, 0, 0) 100%, rgb(0, 0, 0) 112.5%, rgba(0, 0, 0, 0) 125%); border-radius: 0px;"></div></div>
+
+---
+
+These are the CSS, what is wrong? Why is this height smaller?
+
+<div style="position: relative; width: 100%; height: 100%; border-radius: 0px; overflow: hidden; background: none;"><div style="position: absolute; inset: 0px; z-index: 1; pointer-events: none; backdrop-filter: blur(0.078125px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 25%, rgba(0, 0, 0, 0) 37.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 2; pointer-events: none; backdrop-filter: blur(0.15625px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 37.5%, rgba(0, 0, 0, 0) 50%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 3; pointer-events: none; backdrop-filter: blur(0.3125px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgb(0, 0, 0) 37.5%, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 62.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 4; pointer-events: none; backdrop-filter: blur(0.625px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 62.5%, rgba(0, 0, 0, 0) 75%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 5; pointer-events: none; backdrop-filter: blur(1.25px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 62.5%, rgb(0, 0, 0) 75%, rgba(0, 0, 0, 0) 87.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 6; pointer-events: none; backdrop-filter: blur(2.5px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgb(0, 0, 0) 75%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 7; pointer-events: none; backdrop-filter: blur(5px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgb(0, 0, 0) 87.5%, rgb(0, 0, 0) 100%, rgba(0, 0, 0, 0) 112.5%); border-radius: 0px;"></div><div style="position: absolute; inset: 0px; z-index: 8; pointer-events: none; backdrop-filter: blur(10px); mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgb(0, 0, 0) 100%, rgb(0, 0, 0) 112.5%, rgba(0, 0, 0, 0) 125%); border-radius: 0px;"></div></div>
+
+
+lol, the container of it is 108px height
