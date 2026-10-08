@@ -28,4 +28,9 @@ const explorations = defineCollection({
 	schema: gardenSchema,
 });
 
-export const collections = { albums, essays, explorations };
+const reflections = defineCollection({
+	loader: glob({ pattern: "**/*.md", base: "./src/content/reflections" }),
+	schema: gardenSchema,
+});
+
+export const collections = { albums, essays, explorations, reflections };

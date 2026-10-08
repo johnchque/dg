@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import GardenMeta from "../../components/GardenMeta.astro";
+
+export async function getStaticPaths() {
+	const reflections = await getCollection("reflections");
+	return reflections.map((reflection) => ({
+		params: { slug: reflection.id },
+		props: { reflection },
+	}));
+}
+
+const { reflection } = Astro.props;
+const { Content } = await render(reflection);
+---
+
+<Layout
+	title={reflection.data.title}
+	description={reflection.data.description ??
+		`A reflection: ${reflection.data.title}.`}
+>
+	<h1 class="mb-2">{reflection.data.title}</h1>
+	<div class="post-content">
+		<Content />
+	</div>
+	<GardenMeta
+		status={reflection.data.status}
+		createdAt={reflection.data.createdAt}
+		updatedAt={reflection.data.updatedAt}
+	/>
+</Layout>

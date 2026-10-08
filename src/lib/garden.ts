@@ -14,9 +14,10 @@ export interface GardenEntry {
 }
 
 export async function getGardenEntries(): Promise<GardenEntry[]> {
-	const [essays, explorations] = await Promise.all([
+	const [essays, explorations, reflections] = await Promise.all([
 		getCollection("essays"),
 		getCollection("explorations"),
+		getCollection("reflections"),
 	]);
 
 	const entries: GardenEntry[] = [
@@ -28,6 +29,12 @@ export async function getGardenEntries(): Promise<GardenEntry[]> {
 		})),
 		...explorations.map((entry) => ({
 			href: `/explorations/${entry.id}/`,
+			title: entry.data.title,
+			status: entry.data.status,
+			updatedAt: entry.data.updatedAt,
+		})),
+		...reflections.map((entry) => ({
+			href: `/reflections/${entry.id}/`,
 			title: entry.data.title,
 			status: entry.data.status,
 			updatedAt: entry.data.updatedAt,

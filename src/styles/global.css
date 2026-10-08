@@ -3,13 +3,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-    --font-sans: var(--font-open-sans);
+    --font-sans: -apple-system, BlinkMacSystemFont, var(--font-open-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-serif: var(--font-literata);
     --font-handwriting: var(--font-reenie-beanie);
-    --color-charcoal: #161616;
+    --color-charcoal: #0f0f0f;
     --color-mist: #f6f6f6;
     --color-ink: #0f0f0f;
-    --color-chalk: #f3f3f3;
+    --color-chalk: #969696;
     --color-evening: #a8531f;
     --color-sunset: #d6a67c;
     --color-muted: #4f4f4f;
