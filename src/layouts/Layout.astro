@@ -67,7 +67,17 @@ const ogImageURL = new URL(image, Astro.site);
 		<header
 			class="fixed inset-x-0 top-0 z-10 flex max-w-4xl items-start justify-between p-4 md:p-6 lg:p-8"
 		>
-			<div>
+			<div class="nav-blur" aria-hidden="true">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class="relative">
 				<a
 					href="/"
 					class="font-handwriting text-2xl text-evening dark:text-sunset"
@@ -77,7 +87,7 @@ const ogImageURL = new URL(image, Astro.site);
 					Building meaninfgul tech
 				</p>
 			</div>
-			<nav class="flex flex-col items-end gap-1">
+			<nav class="relative flex flex-col items-end gap-1">
 				<!-- <a
 					href="/photos/"
 					class="underline hover:text-evening dark:hover:text-sunset"
@@ -146,5 +156,181 @@ const ogImageURL = new URL(image, Astro.site);
 		body {
 			transition: none;
 		}
+	}
+
+	/*
+	 * Progressive blur filling the header: eight stacked layers, each with
+	 * a doubling backdrop-filter blur and a mask-image band that slides
+	 * down 12.5% per layer. Stacked, they ramp smoothly from a strong blur
+	 * at the top to no blur by the bottom of the header, instead of the
+	 * hard glass-pane edge a single flat blur gives you. Sized to the
+	 * header's own rendered height (not a hardcoded px) so it always
+	 * matches, regardless of content or breakpoint. Pure CSS, no
+	 * JS/scroll listeners — the browser composites it once.
+	 * Technique: https://jrhu.me/
+	 */
+	.nav-blur {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.nav-blur > div {
+		position: absolute;
+		inset: 0;
+	}
+
+	.nav-blur > div:nth-child(1) {
+		backdrop-filter: blur(0.078125px);
+		-webkit-backdrop-filter: blur(0.078125px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 0%,
+			black 12.5%,
+			black 25%,
+			transparent 37.5%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 0%,
+			black 12.5%,
+			black 25%,
+			transparent 37.5%
+		);
+	}
+
+	.nav-blur > div:nth-child(2) {
+		backdrop-filter: blur(0.15625px);
+		-webkit-backdrop-filter: blur(0.15625px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 12.5%,
+			black 25%,
+			black 37.5%,
+			transparent 50%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 12.5%,
+			black 25%,
+			black 37.5%,
+			transparent 50%
+		);
+	}
+
+	.nav-blur > div:nth-child(3) {
+		backdrop-filter: blur(0.3125px);
+		-webkit-backdrop-filter: blur(0.3125px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 25%,
+			black 37.5%,
+			black 50%,
+			transparent 62.5%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 25%,
+			black 37.5%,
+			black 50%,
+			transparent 62.5%
+		);
+	}
+
+	.nav-blur > div:nth-child(4) {
+		backdrop-filter: blur(0.625px);
+		-webkit-backdrop-filter: blur(0.625px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 37.5%,
+			black 50%,
+			black 62.5%,
+			transparent 75%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 37.5%,
+			black 50%,
+			black 62.5%,
+			transparent 75%
+		);
+	}
+
+	.nav-blur > div:nth-child(5) {
+		backdrop-filter: blur(1.25px);
+		-webkit-backdrop-filter: blur(1.25px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 50%,
+			black 62.5%,
+			black 75%,
+			transparent 87.5%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 50%,
+			black 62.5%,
+			black 75%,
+			transparent 87.5%
+		);
+	}
+
+	.nav-blur > div:nth-child(6) {
+		backdrop-filter: blur(2.5px);
+		-webkit-backdrop-filter: blur(2.5px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 62.5%,
+			black 75%,
+			black 87.5%,
+			transparent 100%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 62.5%,
+			black 75%,
+			black 87.5%,
+			transparent 100%
+		);
+	}
+
+	.nav-blur > div:nth-child(7) {
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 75%,
+			black 87.5%,
+			black 100%,
+			transparent 112.5%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 75%,
+			black 87.5%,
+			black 100%,
+			transparent 112.5%
+		);
+	}
+
+	.nav-blur > div:nth-child(8) {
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		mask-image: linear-gradient(
+			to top,
+			transparent 87.5%,
+			black 100%,
+			black 112.5%,
+			transparent 125%
+		);
+		-webkit-mask-image: linear-gradient(
+			to top,
+			transparent 87.5%,
+			black 100%,
+			black 112.5%,
+			transparent 125%
+		);
 	}
 </style>
