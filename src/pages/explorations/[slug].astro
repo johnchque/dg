@@ -19,8 +19,9 @@ const { Content } = await render(exploration);
 	title={exploration.data.title}
 	description={exploration.data.description ??
 		`An exploration: ${exploration.data.title}.`}
+	spacious
 >
-	<h1 class="mb-2">{exploration.data.title}</h1>
+	<h1 class="mb-16">{exploration.data.title}</h1>
 	<div class="post-content">
 		<Content />
 	</div>

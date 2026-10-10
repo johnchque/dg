@@ -9,7 +9,7 @@ const description =
 const gardenEntries = (await getGardenEntries()).slice(0, 10);
 ---
 
-<Layout description={description}>
+<Layout description={description} spacious>
 	<section class="post-content">
 		<p>
 			I am in a continuous journey to learn how to build meaningful tech.
@@ -32,11 +32,11 @@ const gardenEntries = (await getGardenEntries()).slice(0, 10);
 		</p> -->
 	</section>
 
-	<!-- <section class="mt-10 border-t border-black/10 pt-6 dark:border-white/10">
+	<section class="mt-10 pt-6 md:mt-20 md:pt-8">
 		<h2 class="mb-2">Garden</h2>
 		<GardenList entries={gardenEntries} />
 		<a href="/garden/" class="link inline-block">
 			See the whole garden →
 		</a>
-	</section> -->
+	</section>
 </Layout>

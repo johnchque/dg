@@ -33,7 +33,7 @@ const priorityAttrs = priority
 	: { loading: "lazy" as const, decoding: "async" as const };
 ---
 
-<figure class="mb-10">
+<figure class="mb-10 bleed">
 	<img
 		src={imgSrc}
 		srcset={srcSet}
@@ -42,7 +42,7 @@ const priorityAttrs = priority
 		height={height}
 		alt={alt}
 		{...priorityAttrs}
-		class="w-full h-auto rounded"
+		class="w-full h-auto rounded-xl"
 	/>
 	{
 		caption && (

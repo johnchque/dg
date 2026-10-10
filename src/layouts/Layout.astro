@@ -6,6 +6,10 @@ interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
+	// Extra breathing room above the content — the home page and individual
+	// markdown entries (essays/explorations/reflections/albums), not the
+	// section listing pages (/essays/, /garden/, /photos/, etc.).
+	spacious?: boolean;
 }
 
 const siteName = "John Choque";
@@ -16,6 +20,7 @@ const {
 	title,
 	description = defaultDescription,
 	image = "/og-default.png",
+	spacious = false,
 } = Astro.props;
 const pageTitle = title ? `${title} · ${siteName}` : siteName;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -58,7 +63,7 @@ const ogImageURL = new URL(image, Astro.site);
 		<meta name="twitter:image" content={ogImageURL} />
 
 		<Font cssVariable="--font-open-sans" preload />
-		<Font cssVariable="--font-literata" preload />
+		<Font cssVariable="--font-newsreader" preload />
 		<Font cssVariable="--font-reenie-beanie" preload />
 	</head>
 	<body
@@ -129,7 +134,9 @@ const ogImageURL = new URL(image, Astro.site);
 				</button>
 			</nav>
 		</header>
-		<main class="max-w-2xl p-4 pt-28 md:p-6 md:pt-28 lg:p-8 lg:pt-32">
+		<main
+			class={`max-w-xl p-4 md:p-6 lg:p-8 ${spacious ? "pt-52 md:pt-52 lg:pt-64" : "pt-28 md:pt-28 lg:pt-32"}`}
+		>
 			<slot />
 		</main>
 		<script is:inline>

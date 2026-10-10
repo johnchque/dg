@@ -29,8 +29,8 @@ export default defineConfig({
       styles: ['normal']
     },
     {
-      name: 'Literata',
-      cssVariable: '--font-literata',
+      name: 'Newsreader',
+      cssVariable: '--font-newsreader',
       provider: fontProviders.google(),
       weights: [400],
       styles: ['normal']

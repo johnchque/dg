@@ -18,8 +18,9 @@ const { Content } = await render(essay);
 <Layout
 	title={essay.data.title}
 	description={essay.data.description ?? `An essay: ${essay.data.title}.`}
+	spacious
 >
-	<h1 class="mb-2">{essay.data.title}</h1>
+	<h1 class="mb-16">{essay.data.title}</h1>
 	<div class="post-content">
 		<Content />
 	</div>

@@ -66,7 +66,7 @@ export function rehypePhotos() {
 
 			parent.children[index] = h(
 				"figure",
-				{ class: "mb-10" },
+				{ class: "mb-10 bleed" },
 				h("img", {
 					src,
 					srcSet,
@@ -77,7 +77,7 @@ export function rehypePhotos() {
 					loading: priority ? "eager" : "lazy",
 					decoding: priority ? "sync" : "async",
 					...(priority ? { fetchpriority: "high" } : {}),
-					class: "w-full h-auto rounded",
+					class: "w-full h-auto rounded-xl",
 				}),
 				caption &&
 					h("figcaption", { class: "mt-2 text-sm text-gray-400" }, caption),
