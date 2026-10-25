@@ -1,0 +1,726 @@
+Check if this project is running. I went to localhost:4321 and I could access but I see no terminal with the process
+
+---
+
+Kill it, I will start it myself
+
+---
+
+OK, I realised that I want something called feed, that is like my own social media. I t should have reflections there as well as photos. It is like, twitter and instagram tied together into one. What do you think
+
+---
+
+Yes, we remove reflections and albums. Everything is on feed instead. We should show it as a scroll feed. Where when we click on each, it takes us to its own page.
+
+Because I want to truncate the reflections to be shorter and the albums should only show the title and the photos in the carousel.
+
+It should live in /feed
+
+---
+
+Fix the new feed entry I added, giving up on being an expert. Meaning fix the schema
+
+---
+
+Cool but can you make the feed page to style every entry similarly? The only difference would be whether they have photos or not or so
+
+---
+
+Not sure if I want to date exactly the photo albums. Maybe in the future I will want a text only feed entry to not be dated, just month shuld be enough. Should we do a way to do that? That with a flag or setting the day as 00 of the date that we only show in the month, so it goes to the top of the month entries or so?
+
+---
+
+Can you do that for the copenhagen post with photos? Remove the date
+
+---
+
+Not sure if we need the Keep reading button on the text entries. I feel those make too much space. maybe we make only 3 lines truncated and remove that text and we make the whole thing to be clickable?
+
+---
+
+OK, check the feed folder. And fix the schema of all of them
+
+---
+
+Can you also remove the subtitles and content of Weekly realizations of those that have it? And also the hihglight of the week? No need to have those anymore
+
+---
+
+yeah, let's remove the sign off
+
+---
+
+Ok, I feel this makes more sense. Ideally, the Garden should be with evergreen notes I keep building and the essays. Then, the feed are more reflections and photos I want to post.
+Then the workbench is basically my projects of all kind
+
+---
+
+'/Users/johnchque/Documents/2_areas/personal-website/src/content/works/' The docs in that folder are the ones I want to mix in a workbench page.
+
+4. The difference is the same as Maggie Appletons garden for both types. Check her garden
+
+---
+
+OK, not sure if the way of showing the metadata of the projects on the list is fine. What would make it better? Like, in a way that is clean but also informative and showcase that I am a diverse person by nature
+
+---
+
+OK, let's do the improvements you suggest.
+
+---
+
+Ah no, remove that summary and style the p s taht I added
+
+---
+
+We should make the whole card for the project to be cliackalbe when it can be clickable? Instead of just the title or so?
+
+---
+
+Should we make more space between them? Or maybe make the title of the project to have a serif font? Not sure
+
+---
+
+Nah,a ctually before was better
+
+---
+
+Not sure if I like the metadata like that? Can I improve it somehow or simplify it more or so?
+
+---
+
+A
+
+---
+
+No, too compact. Maybe B was better
+
+---
+
+Not sure if was better to have them grouped by year as before. Instead of each showing the year
+
+---
+
+Not sure if the styling of the grouping is nice. Kinda looks difficult to notice
+
+'/var/folders/w8/hw269h1j3y5ffxzx2m61f7300000gn/T/TemporaryItems/NSIRD_screencaptureui_9OVbjO/Screenshot 2026-10-25 at 19.14.38.png'
+
+---
+
+No, that's too much. I want it to look leaner and clean
+
+---
+
+great stuff, not sure if I should make the one liners of each project longer. If so, give me an example. for YLMA for example
+
+---
+
+I like 1
+
+---
+
+Is there anyway to improve the layout of the projects? To make them like Vercel style or so? Where the metadata is better displayed and so. Not sure. The project detail page
+
+---
+
+Hmm maybe we should remove the with? Is it even needed?
+
+---
+
+I was thinking of removing the garden list from the homepage.
+
+And instead place a bullet point list like this:
+
+The oak letter desk: a collection of my favourite writing;
+The hand-crafted workbench: craft I am proud of (websites, talks, workshops, projects, etc.);
+The bookshelf on the far wall: books that are in some state of read, being read, or to be read.
+
+
+But for Garden, workbench, and feed. What do you think?
+
+---
+
+Not sure if I like pinboard. And the descriptions of each does not sound like me. Check my other writing to see how I would write
+
+---
+
+Add them to the home page and remove the garden from the homepage
+
+---
+
+Something like this? Not sure, check what I changed in the homepage
+
+---
+
+I like something like this for the garden:
+
+a collection of imperfect notes, essays, and ideas growing slowly over time. Learn more
+
+And the journal, let's call it feed.
+
+
+Also, should we make these cards instead of bullet points?
+
+---
+
+Yeah but we can make very simple minimalistic cards, to expand a bit the styling of the page.
+
+We don't use those where we don't need them but in some places we may
+
+---
+
+Instead of having the card like that, we can have the background be slightly darker or lighter depending on the theme. Something very subtle, no borders
+
+---
+
+'/var/folders/w8/hw269h1j3y5ffxzx2m61f7300000gn/T/TemporaryItems/NSIRD_screencaptureui_2jW4ie/Screenshot 2026-10-25 at 19.40.48.png'
+
+
+Maybe we do like this. That icon or whatever is is nice.
+
+And just kinda bullet points.
+
+Maybe as subtitle, things to get started with or so
+
+---
+
+OK, that svg is not so nice. Try to make it more like an equal triangle. Keeping the dots. I mean, it is wider than taller. I want it a square feeling
+
+---
+
+Ok, now the workbench feels a bit too crowded. What should I do? Should I remove something?
+
+---
+
+No, I am talking about the list.
+
+---
+
+Should we add the year to each entry? What do you think?
+
+---
+
+Try the droping one
+
+---
+
+Not sure if the year there is the best
+
+---
+
+Nah, awful. What about
+
+
+You Love My Arrogance . 2025
+
+Middle point, you know. The year is in darker color or so
+
+---
+
+Nah, the year in the metadata is better. But maybe as first element, not last. So it is easy to scan
+
+---
+
+Should we make a bit more space between entries?
+
+---
+
+What do you think?
+
+---
+
+I am fine with the patchy titles, those are the ones that do not have a link, it is fine. The typo fix it
+
+---
+
+Not sure if on the role of YLMA I should be listed as all that or if there is a better way to summarise what I did.
+
+I wrote the script of the video, I recorded, I edited the video
+
+---
+
+2
+
+---
+
+Same for raaz, thing is that the video is very simple, almost like a visualizer
+
+---
+
+For difficult hugs, i helped writing and editing but we are very left, so attribution is not thaaat importnat. What could I add?
+
+---
+
+2
+
+---
+
+I like the desription too
+
+---
+
+What can we write for Raaz description?
+
+---
+
+If I give you the link could you classify it?
+
+---
+
+https://www.youtube.com/watch?v=PL1cs0AbLpw&list=RDPL1cs0AbLpw&start_radio=1&REDACTED%3D%3D
+
+---
+
+What description do you recommend? Maybe try to get more frames somehow?
+
+---
+
+Nah, it is about his gf but we cannot say that lol
+
+---
+
+OK, what about Buy a Brick?
+
+---
+
+2
+
+---
+
+What about Un-fair, also get the frames. It is simpler video but maybe also good to showcase
+
+---
+
+it is a word play, yeah, it is about racism and so.
+
+And the minimal is better. Raw, not sure
+
+---
+
+I hate that of one wall, one light bs.
+
+---
+
+For Empoderando Juventudes, the thing that remains is the facebook page. Should we add it?
+
+https://www.facebook.com/EmpoJuveLaPaz
+
+Maybe the link just links there as an external link?
+
+---
+
+HQNV is an organization, not startup. And it also has a FB page:
+https://www.facebook.com/historiasquenovemos
+
+---
+
+Awesome, but I was also the co-founder. So change that. Not sure if the description is good enough.
+
+---
+
+I was not the technical lead.
+
+And the idea is to make it more pro-feminist. The idea is in that direction, otherwise you sound a bit into mens right bs lol
+
+---
+
+1
+
+---
+
+For letting go comics is this: https://www.webtoons.com/en/canvas/letting-go-comics/list?title_no=628509
+
+What about the description?
+
+---
+
+3
+
+---
+
+I love the styling of the project list, can we do something similar for the feed?
+
+---
+
+Nah, undo. The feed was better before
+
+---
+
+OK, maybe we can show the metadata of the feed as we show the metadata of the projects?
+
+---
+
+Maybe we add the 2 min read stuff too that you added before and it is truncated at 2 lines. And that the space between the title and the text is not that big?
+
+---
+
+Maybe we make the header text in the list smaller as well, and slightly less space with the text
+
+---
+
+Should we change all the text formatting to be similar? Like Nov 2024, or not sure what is a good way that can handle both, dates with months only or also with days
+
+---
+
+Should we try the workbench list links to be a serif font?
+
+---
+
+OK, I feel the links of the feed are not the same. Should we make them more similar? Even colors and font sizes.
+
+---
+
+OK, I feel the links of the feed are not the same compared to the workbench. Should we make them more similar? Even colors and font sizes.
+
+---
+
+Is it a good idea to make them so similar? Or maybe we do the feed more twitter/instagram like? Like, kimda similar but small differences
+
+---
+
+Maybe 1 and 4?
+
+---
+
+Maybe remove the divider, and make the title be sans serif like the body?
+
+---
+
+No, let's keep them serif but truncate in 3 lines instead
+
+---
+
+OK, let's try sans serif for title again?
+
+---
+
+Nah, let's do serif
+
+---
+
+Is the spacing between items the same on workbench and feed?
+
+---
+
+Same spacing
+
+---
+
+No, let's use the bigger spacing
+
+---
+
+Hmm too much, maybe a middle ground?
+
+---
+
+Maybe 4 lines truncated in the feed?
+
+---
+
+Do you think it would make it more impactful if the workbench detail page is centered horizontally in the middle for desktop?
+
+---
+
+Should we add the dots in triangle svg for the projects or for the feed entries?
+
+---
+
+Not sure how to make the feed more special?
+
+---
+
+I will post my photos and tweets there. Never individual photos.
+
+Let's try 1 and 3?
+
+---
+
+Should we make every entry on the feed to have the handwriting font in the title?
+
+---
+
+What if we truncate after 20 lines or so?
+
+---
+
+https://maggieappleton.com/smidgeons
+
+Maybe we can get something from here?
+
+---
+
+Where should they live?
+
+---
+
+What if in the feed we just expand within the page, never we make it into new pages? Even the albums?
+
+---
+
+Maybe we keep the pages but we don't link them? Maybe when we add a share button it will be useful?
+
+---
+
+The show less does not work. I think what we had before was nice, the date becomes the link. Only that
+
+---
+
+I like the show more and show less buttons. Let's just make it work.
+
+---
+
+can we make a transition when pressing the button? Better if it is CSS based
+
+---
+
+It is not animating. Cache?
+
+---
+
+Don't use something that is not well supported.
+
+---
+
+Great, can we do that when we click at any part of the text, we expand it?
+
+---
+
+Cool, we can remove the short one that you added as example
+
+---
+
+Damn, so good. Now the feed looks special.
+
+How can we make the workbench to look special now?
+
+---
+
+Maybe we add images for each? Give me other ideas?
+
+---
+
+Hmm check again, what other alternatives do I have? Maybe we make use of the handwriting? Or maybe we use images? Give me an example?
+
+---
+
+No, other ideas. Get inspo from the Internet
+
+---
+
+No, I want something that works on mobiel and on desktop
+
+---
+
+Other ideas, search again in other places
+
+---
+
+No, something that fits my aesthetic
+
+---
+
+I wnat to make it more like movies or so. Something more elegant more big, more unique. Make an attempt and we will see.
+
+---
+
+Nah, try something else. More clean, more minimalistic, more stylish
+
+---
+
+No, awful. We rely more on simpler fonts and more visual stuff?
+
+---
+
+No, awful. I want a single column. More vercel like
+
+---
+
+Something is broken
+
+---
+
+No, awful, that has no personality
+
+---
+
+What about adding an image and making it cinemascope aspect ratio?
+
+---
+
+Nah, undo
+
+---
+
+OK, how can we make the layout of the project detail page better? Something is wrong or weird. I feel we can make it more stylish and clean and minimalistic while being informative.
+
+---
+
+OK, should we make the first image or a video marked with an image to expand all the way untilt he theme changing icon on desktop?
+
+---
+
+OK, for the videos from YouTube. Can we make it not load the full player or so? Instead just have the image and a play button over it? So it looks more clean?
+
+---
+
+You sure? They look the same?
+
+---
+
+Let's not make it automatic the first element. Just the ones marked with a class or so.
+
+---
+
+Make wide, all the videos and images of YLMA page
+
+---
+
+Not working, checl
+
+---
+
+Sorry, for YLMA, only the first one. The rest should be the same width as the text
+
+---
+
+Also remove the bleed from the others videos? I think we have the bleed class no?
+
+---
+
+Raaz, make it wide the video
+
+---
+
+Can we make the back button on the workbench detail pages to have a bit of animation? Maybe the text to move a bit to the right or so? I don't know, something
+
+---
+
+No, the icon remains, the text moves.
+
+---
+
+It looks weird, is it CSS only?
+
+---
+
+Maybe we make it like Maggie Appleton, Back to Workbench
+
+And in hover the icon appears with the text sliding right?
+
+---
+
+Maybe wwe remove Back to
+
+---
+
+OK, what should a good project description have? I feel that YLMA is fine but not the best
+
+---
+
+Vishay Khxl had a song and he wanted to make a video. We sparred some ideas and we achieved this concept.
+
+I wanted people to think of them as the insecure people they are and how they actually do not properly assess their own behavior and they live of men being insecure and trying to overcome that with that macho behavior.
+
+It got around 7 thousand views. It was mostly a fun project. It was the first video that had a full on cast and scripting.
+
+I learned so much about editing and camera angles, to avoid having to do CGI or effects for showing 2 people being represented by the same person fighgitn. It also taugth me to explain people what to do and how to work together, like a proper director.
+
+---
+
+Imrpove the story, looks to AI ish
+
+---
+
+Also Production
+
+---
+
+<pasted_content id="8939">
+  1. What is it, in one breath? The description line at the top already does this.
+  2. Why did it exist? Who asked, what the song or cause was about, what you wanted to say.
+  3. What was the idea? The concept or central choice that makes this project different from a generic version of it.
+  4. What did you actually do? Your hands on it, concretely. This is what a Danish employer or collaborator reads for.
+  5. How did you make it work? Constraints, decisions and tricks. This shows craft.
+  6. What happened after? Release, reactions, numbers if you have them, or simply how it landed.
+  7. What did it teach you? One or two honest sentences. This is your reflective voice, and it's what makes it your page rather than a
+     press release.
+  8. Credits. The people.
+</pasted_content id="8939">
+
+
+
+Let's do this for Raaz? Ask questions if needed. THis time we won't add images or videos.
+
+---
+
+1. Same thing, same album, we wanted to make a video with that vibe of love and longing of what it can be but sometimes society does not let us.
+2. The song is about love. These are the lyrics:
+
+
+
+<pasted_content id="8939">
+[Hook]-
+She was my little secret, there was something about her
+She loved me so much, she was special to me
+So many times she wandered around with me
+And when the night arrived, all our mistakes were forgiven
+
+Kept hidden, yet she’d slip through my hands
+Even in the sun, like the cold, her gaze would shiver
+Don’t know how, but she was so pure at heart
+In your arms, it felt peaceful even in sorrow
+
+I remember how we used to cloud gaze
+Getting high, lying on the sofa we ate
+Showing each other dreams of tomorrow
+These moments are the ones I make my own
+And maybe I’ll never forget them
+I’m not used to getting good things
+The fear of losing makes me a coward
+Or it makes me a poet — look all these lines are fire
+
+And we have told ourselves enough lies
+There’s so little time left, so lets not sulk
+Even though we know our dreams will shatter in future,
+I’ve gotten used to this — it’s hard to break free
+
+[Hook]×2
+
+[Verse]
+Even now, I haven’t really understood you
+You’re a riddle impossible to solve
+Keep my songs close to you alright
+Hiding from the world, but never hiding from me
+
+In everything, I keep searching for you
+Your thought never really stops in my mind
+You know I never listen to anyone else
+Your lover dont bow before anyone
+I never really escape your memories
+Never really doubt you either
+What will happen next — I don’t really care
+No worries, no regrets either
+
+Dark sky, you’re the full moon
+Without you, I’m not okay at all
+Don’t want you to go too far from me, my love
+I’m a crazy boy — always hold me close
+</pasted_content id="8939">
+
+
+3. Simple visualizer, transmit the melancholy of the song It is in Copenhagen, around the city. It is if he was calling his loved one and telling them what he says in the song in some parts.
+
+4. I filmed it too.
+
+5. I used the same gear as YLMA, we recorded in 2 different days.
+
+6. We got a good reception too, the song was very well received in Spotify.
+
+7. This one was more about the editing, the color grading, the subtitles, and matching the song.
+
+8. Left out, we cannot name her
+
+---
+
+Good stuff, just one thing, we made this video before YLMA

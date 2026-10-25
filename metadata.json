@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.12.1",
+  "checkpoint_id": "01M5TPN38BV3PCF7DEMF6DH275",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 143,
+  "files_touched": [
+    "src/content/workbench/raaz.md",
+    "src/content/workbench/ylma.md",
+    "src/layouts/Layout.astro",
+    "src/lib/rehype-photos.ts",
+    "src/lib/rehype-videos.ts",
+    "src/pages/workbench/[slug].astro",
+    "src/styles/global.css"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 838,
+    "cache_creation_tokens": 445278,
+    "cache_read_tokens": 63534277,
+    "output_tokens": 221598,
+    "api_call_count": 419
+  },
+  "redaction": {
+    "replacements": 2,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 2,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
