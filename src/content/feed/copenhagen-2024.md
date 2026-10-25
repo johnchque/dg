@@ -1,6 +1,6 @@
 ---
 title: "Copenhagen"
-date: 2024-11-17
+date: 2024-11
 ---
 
 A short trip to Copenhagen. We landed in the evening and the city was already lit up for winter.

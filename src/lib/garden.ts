@@ -1,9 +1,18 @@
 import { getCollection } from "astro:content";
 
+// Spelled out by hand rather than with toLocaleDateString, which gives
+// "Sept" for September in en-GB and can vary between Node versions.
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// "19 Aug 2026", or "19 Aug" without the year.
 export function formatDate(date: Date, includeYear = true): string {
-	const day = String(date.getDate()).padStart(2, "0");
-	const month = String(date.getMonth() + 1).padStart(2, "0");
-	return includeYear ? `${day}.${month}.${date.getFullYear()}` : `${day}.${month}`;
+	const dayMonth = `${date.getDate()} ${MONTHS[date.getMonth()]}`;
+	return includeYear ? `${dayMonth} ${date.getFullYear()}` : dayMonth;
+}
+
+// "Aug 2026": the same format as formatDate, minus the day.
+export function formatMonth(date: Date): string {
+	return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 }
 
 export interface GardenEntry {
@@ -14,10 +23,9 @@ export interface GardenEntry {
 }
 
 export async function getGardenEntries(): Promise<GardenEntry[]> {
-	const [essays, explorations, reflections] = await Promise.all([
+	const [essays, notes] = await Promise.all([
 		getCollection("essays"),
-		getCollection("explorations"),
-		getCollection("reflections"),
+		getCollection("notes"),
 	]);
 
 	const entries: GardenEntry[] = [
@@ -27,14 +35,8 @@ export async function getGardenEntries(): Promise<GardenEntry[]> {
 			status: entry.data.status,
 			updatedAt: entry.data.updatedAt,
 		})),
-		...explorations.map((entry) => ({
-			href: `/explorations/${entry.id}/`,
-			title: entry.data.title,
-			status: entry.data.status,
-			updatedAt: entry.data.updatedAt,
-		})),
-		...reflections.map((entry) => ({
-			href: `/reflections/${entry.id}/`,
+		...notes.map((entry) => ({
+			href: `/notes/${entry.id}/`,
 			title: entry.data.title,
 			status: entry.data.status,
 			updatedAt: entry.data.updatedAt,

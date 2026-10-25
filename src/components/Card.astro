@@ -1,0 +1,32 @@
+---
+interface Props {
+	href: string;
+	title: string;
+}
+
+const { href, title } = Astro.props;
+---
+
+<!--
+	A minimal bordered card. The whole card is clickable through the title
+	link's ::after overlay rather than an outer <a>, so the description can
+	still hold links of its own (an <a> can't contain another <a>).
+-->
+<div
+	class="card group relative rounded-xl bg-black/4 p-4 transition-colors duration-150 hover:bg-black/6 dark:bg-white/5 dark:hover:bg-white/8"
+>
+	<a href={href} class="link after:absolute after:inset-0 after:content-['']">
+		{title}
+	</a>
+	<div class="text-muted dark:text-muted-dark">
+		<slot />
+	</div>
+</div>
+
+<style>
+	/* Links inside the description sit above the card-wide overlay. */
+	.card :global(div a) {
+		position: relative;
+		z-index: 1;
+	}
+</style>

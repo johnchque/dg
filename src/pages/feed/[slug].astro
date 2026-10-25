@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatPostDate } from "../../lib/feed";
+import { ogImageUrl } from "../../lib/imagekit";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("feed");
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+const firstPhoto = remarkPluginFrontmatter.photos?.[0];
+const ogImage = firstPhoto ? ogImageUrl(firstPhoto.path) : undefined;
+const date = formatPostDate(post.data.date, post.data.monthOnly);
+---
+
+<Layout
+	title={post.data.title ?? `Post from ${date}`}
+	description={post.data.title
+		? `${post.data.title}, from my feed.`
+		: `A post from my feed, ${date}.`}
+	image={ogImage}
+>
+	<p class="mb-3 text-sm text-muted tabular-nums dark:text-muted-dark">
+		<a href="/feed/" class="hover:text-evening dark:hover:text-sunset">Feed</a>{" "}
+		· {date}
+	</p>
+	{post.data.title && <h1 class="mb-16">{post.data.title}</h1>}
+	<div class="post-content">
+		<Content />
+	</div>
+</Layout>

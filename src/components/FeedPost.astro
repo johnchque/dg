@@ -1,0 +1,54 @@
+---
+import Carousel from "./Carousel.astro";
+import { formatPostDate, type FeedPost } from "../lib/feed";
+
+interface Props {
+	post: FeedPost;
+	priority?: boolean;
+}
+
+const { post, priority } = Astro.props;
+const { href, title, date, monthOnly, photos, excerpt, readingMinutes } = post;
+const displayDate = formatPostDate(date, monthOnly);
+---
+
+{
+	photos.length > 0 ? (
+		<article class="mb-16">
+			{title && (
+				<h2 class="mb-2 text-lg">
+					<a href={href} class="link">
+						{title}
+					</a>
+				</h2>
+			)}
+			<Carousel
+				href={href}
+				label={title ?? `Post from ${displayDate}`}
+				photos={photos}
+				priority={priority}
+			/>
+			<p class="mt-2 text-xs tabular-nums text-muted dark:text-muted-dark">
+				{displayDate}
+			</p>
+		</article>
+	) : (
+		// Text posts are one big link: the carousel above has its own links and
+		// buttons, so only these can be wrapped whole.
+		<article class="mb-16">
+			<a href={href} class="group block">
+				{title && (
+					<h2 class="text-lg">
+						<span class="link">{title}</span>
+					</h2>
+				)}
+				<p class="text-sm line-clamp-2 text-muted dark:text-muted-dark">
+					{excerpt}
+				</p>
+				<p class="mt-1 text-xs tabular-nums text-muted dark:text-muted-dark">
+					{displayDate} · {readingMinutes} min read
+				</p>
+			</a>
+		</article>
+	)
+}

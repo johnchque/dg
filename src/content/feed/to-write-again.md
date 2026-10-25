@@ -1,9 +1,6 @@
 ---
 title: "I want to write again"
-createdAt: 2026-08-19
-updatedAt: 2026-08-19
-status: "seedling"
-description: ""
+date: 2026-08-19
 ---
 I have been struggling to write down this piece for quite a while. I think I have been trying to define the perfect structure for my website so finally, when it is done, I can publish my thoughts. I think I was just delaying the process of writing again.
 

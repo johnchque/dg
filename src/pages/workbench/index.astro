@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { getProjects } from "../../lib/workbench";
+
+const projects = await getProjects();
+---
+
+<Layout
+	title="Workbench"
+	description="A consolidated list of all the things I created along the years."
+>
+	<h1 class="mb-2">Workbench</h1>
+	<section class="post-content mb-10">
+		<p>A consolidated list of all the things I created along the years.</p>
+		<p>
+			The projects listed here have multiple shapes and forms, with
+			different collaborators and purposes. They go from making a music
+			video for a friend to having my own startup.
+		</p>
+		<p>
+			I love building and creating things. That's why the list you see
+			here is diverse in nature. I always love to explore new knowledge
+			areas and even better if they are outside my common expertise.
+		</p>
+	</section>
+	<ul class="list-none">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</ul>
+</Layout>

@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FeedPost from "../../components/FeedPost.astro";
+import { getFeedPosts } from "../../lib/feed";
+import { ogImageUrl } from "../../lib/imagekit";
+
+const posts = await getFeedPosts();
+
+const firstPhoto = posts.find((post) => post.photos.length > 0)?.photos[0];
+const ogImage = firstPhoto ? ogImageUrl(firstPhoto.path) : undefined;
+---
+
+<Layout
+	title="Feed"
+	description="Thoughts, reflections and photos, as they happen."
+	image={ogImage}
+>
+	<h1 class="mb-6">Feed</h1>
+	{posts.map((post, index) => <FeedPost post={post} priority={index === 0} />)}
+</Layout>

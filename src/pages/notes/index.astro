@@ -3,29 +3,29 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
 
-const explorations = await getCollection("explorations");
-explorations.sort(
+const notes = await getCollection("notes");
+notes.sort(
 	(a, b) => b.data.updatedAt.valueOf() - a.data.updatedAt.valueOf(),
 );
 ---
 
 <Layout
-	title="Explorations"
-	description="Notes from learning something in depth, published as I go."
+	title="Notes"
+	description="Loose notes on things I don't entirely understand yet."
 >
-	<h1 class="mb-6">Explorations</h1>
+	<h1 class="mb-6">Notes</h1>
 	<ul class="list-none space-y-3">
 		{
-			explorations.map((exploration) => (
+			notes.map((note) => (
 				<li>
 					<a
-						href={`/explorations/${exploration.id}/`}
+						href={`/notes/${note.id}/`}
 						class="link"
 					>
-						{exploration.data.title}
+						{note.data.title}
 					</a>
 					<span class="ml-2 text-muted dark:text-muted-dark">
-						<StatusBadge status={exploration.data.status} />
+						<StatusBadge status={note.data.status} />
 					</span>
 				</li>
 			))

@@ -15,7 +15,7 @@ interface PhotoRef {
 
 // Turns a stand-alone Markdown image (`![alt](url?width=&height= "caption")`,
 // which CommonMark wraps in its own <p>) into a fully responsive, styled
-// <figure>, and records each photo so /photos.astro can build a flat stream
+// <figure>, and records each photo so the feed can show it as a carousel
 // without a separate frontmatter list. Dimensions are required in the URL
 // query string because there's nowhere else in plain Markdown to put them
 // while staying Obsidian-friendly (no MDX/component syntax, no attribute

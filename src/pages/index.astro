@@ -1,12 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GardenList from "../components/GardenList.astro";
-import { getGardenEntries } from "../lib/garden";
 
 const description =
 	"Software Engineer and Social Entrepreneur working on AI ethics, data sovereignty, and a post-extractive web. Also: photos, guitar, and bouldering.";
 
-const gardenEntries = (await getGardenEntries()).slice(0, 10);
+const places: { href: string; name: string; text: string; more?: string }[] = [
+	{
+		href: "/workbench/",
+		name: "The workbench",
+		text: "all the things I created along the years.",
+	},
+	{
+		href: "/feed/",
+		name: "The feed",
+		text: "what I have been thinking about lately.",
+	},
+];
 ---
 
 <Layout description={description}>
@@ -26,17 +35,49 @@ const gardenEntries = (await getGardenEntries()).slice(0, 10);
 			>. Prior to this role, I co-founded multiple organizations and
 			startups, and volunteered with several mission-driven initiatives.
 		</p>
-		<!-- <p>
-			Beyond work, I like to travel and take photos, play the guitar, ÎÍÅand
-			do bouldering.
-		</p> -->
 	</section>
 
-	<section class="mt-10 pt-6 md:mt-20 md:pt-8">
-		<h2 class="mb-2">Garden</h2>
-		<GardenList entries={gardenEntries} />
-		<a href="/garden/" class="link inline-block">
-			See the whole garden →
-		</a>
+	<section class="mt-10">
+		<h2 class="mb-4 font-sans text-base">
+			Some places you may want to visit:
+		</h2>
+		<ul class="list-none space-y-3 text-muted dark:text-muted-dark">
+			{
+				places.map(({ href, name, text, more }) => (
+					<li class="flex gap-3">
+						<svg
+							class="mt-[0.4em] size-3 shrink-0"
+							viewBox="0 0 12 12"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<!-- Equilateral triangle (side 6), centred in the 12×12 box. -->
+							<circle cx="3.4" cy="3" r="1.2" />
+							<circle cx="3.4" cy="9" r="1.2" />
+							<circle cx="8.6" cy="6" r="1.2" />
+						</svg>
+						<span>
+							<a href={href} class="link">
+								{name}
+							</a>
+							: {text}
+							{more && (
+								<>
+									{" "}
+									<a
+										href={more}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="link"
+									>
+										Learn more
+									</a>
+								</>
+							)}
+						</span>
+					</li>
+				))
+			}
+		</ul>
 	</section>
 </Layout>

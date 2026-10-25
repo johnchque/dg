@@ -99,7 +99,13 @@
         }
     }
 
-    a[target="_blank"]::after {
+    /*
+     * External-link arrow. A link wrapping a whole card opts out with
+     * data-external-icon and puts the arrow on a child (e.g. its title)
+     * instead, so it doesn't land under the card's last line.
+     */
+    a[target="_blank"]:not([data-external-icon])::after,
+    [data-external-icon] .external-icon::after {
         content: "";
         display: inline-block;
         width: 1em;
@@ -124,7 +130,8 @@
         transition: color 0.15s ease, background-size 0.25s ease;
     }
 
-    .link:hover {
+    .link:hover,
+    .group:hover .link {
         color: color-mix(in oklab, var(--color-evening) 65%, var(--color-ink));
         background-size: 100% 1px;
     }
@@ -133,7 +140,8 @@
         color: var(--color-sunset);
     }
 
-    html.dark .link:hover {
+    html.dark .link:hover,
+    html.dark .group:hover .link {
         color: color-mix(in oklab, var(--color-sunset) 65%, white);
     }
 }

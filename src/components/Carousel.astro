@@ -1,23 +1,15 @@
 ---
 import { getResponsiveImageAttributes } from "@imagekit/javascript";
-import { formatDate } from "../lib/garden";
-
-interface Photo {
-	path: string;
-	alt: string;
-	width: number;
-	height: number;
-}
+import type { Photo } from "../lib/feed";
 
 interface Props {
 	href: string;
-	title: string;
-	date: Date;
+	label: string;
 	photos: Photo[];
 	priority?: boolean;
 }
 
-const { href, title, date, photos, priority } = Astro.props;
+const { href, label, photos, priority } = Astro.props;
 
 const urlEndpoint = import.meta.env.IMAGEKIT_URL_ENDPOINT;
 
@@ -44,70 +36,64 @@ const icons = {
 };
 ---
 
-<article class="mb-16">
-	<p class="mb-3 text-sm text-muted dark:text-muted-dark">
-		{title} · <span class="tabular-nums">{formatDate(date)}</span>
-	</p>
-
-	<div class="carousel group relative bleed">
-		<ul
-			class="carousel-track flex list-none snap-x snap-mandatory overflow-x-auto rounded-xl"
-			style={{ aspectRatio }}
-			aria-label={`${title}, ${photos.length} photos`}
-		>
-			{
-				slides.map((slide, index) => (
-					<li class="h-full w-full shrink-0 snap-start">
-						<a href={href} class="block h-full" tabindex={index === 0 ? undefined : -1}>
-							<img
-								src={slide.src}
-								srcset={slide.srcSet}
-								sizes={slide.sizes}
-								width={slide.width}
-								height={slide.height}
-								alt={slide.alt}
-								loading={priority && index === 0 ? "eager" : "lazy"}
-								fetchpriority={priority && index === 0 ? "high" : undefined}
-								decoding="async"
-								class="h-full w-full object-cover"
-							/>
-						</a>
-					</li>
-				))
-			}
-		</ul>
-
+<div class="carousel group relative bleed">
+	<ul
+		class="carousel-track flex list-none snap-x snap-mandatory overflow-x-auto rounded-xl"
+		style={{ aspectRatio }}
+		aria-label={`${label}, ${photos.length} photos`}
+	>
 		{
-			photos.length > 1 && (
-				<>
-					<button
-						type="button"
-						data-dir="-1"
-						aria-label="Previous photo"
-						class="carousel-button left-3"
-					>
-						<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
-							<path d={icons.prev} />
-						</svg>
-					</button>
-					<button
-						type="button"
-						data-dir="1"
-						aria-label="Next photo"
-						class="carousel-button right-3"
-					>
-						<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
-							<path d={icons.next} />
-						</svg>
-					</button>
-					<div class="carousel-dots" aria-hidden="true">
-						{photos.map(() => <span />)}
-					</div>
-				</>
-			)
+			slides.map((slide, index) => (
+				<li class="h-full w-full shrink-0 snap-start">
+					<a href={href} class="block h-full" tabindex={index === 0 ? undefined : -1}>
+						<img
+							src={slide.src}
+							srcset={slide.srcSet}
+							sizes={slide.sizes}
+							width={slide.width}
+							height={slide.height}
+							alt={slide.alt}
+							loading={priority && index === 0 ? "eager" : "lazy"}
+							fetchpriority={priority && index === 0 ? "high" : undefined}
+							decoding="async"
+							class="h-full w-full object-cover"
+						/>
+					</a>
+				</li>
+			))
 		}
-	</div>
-</article>
+	</ul>
+
+	{
+		photos.length > 1 && (
+			<>
+				<button
+					type="button"
+					data-dir="-1"
+					aria-label="Previous photo"
+					class="carousel-button left-3"
+				>
+					<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+						<path d={icons.prev} />
+					</svg>
+				</button>
+				<button
+					type="button"
+					data-dir="1"
+					aria-label="Next photo"
+					class="carousel-button right-3"
+				>
+					<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+						<path d={icons.next} />
+					</svg>
+				</button>
+				<div class="carousel-dots" aria-hidden="true">
+					{photos.map(() => <span />)}
+				</div>
+			</>
+		)
+	}
+</div>
 
 <style>
 	.carousel-dots {

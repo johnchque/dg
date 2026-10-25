@@ -12,7 +12,7 @@ interface Props {
 
 const siteName = "John Choque";
 const defaultDescription =
-	"John Choque — Software Engineer and Social Entrepreneur. Photos, albums, and writing.";
+	"John Choque — Software Engineer and Social Entrepreneur. Feed and writing.";
 
 const {
 	title,
@@ -87,19 +87,14 @@ const ogImageURL = new URL(image, Astro.site);
 					>John Choque</a
 				>
 				<p class="text-muted dark:text-muted-dark">
-					Building meaninfgul tech
+					Building meaningful tech
 				</p>
 			</div>
 			<nav class="relative flex flex-col items-end gap-1">
 				<!-- <a
-					href="/photos/"
+					href="/feed/"
 					class="underline hover:text-evening dark:hover:text-sunset"
-					>Photos</a
-				>
-				<a
-					href="/albums/"
-					class="underline hover:text-evening dark:hover:text-sunset"
-					>Albums</a
+					>Feed</a
 				> -->
 				<button
 					id="theme-toggle"

@@ -1,0 +1,40 @@
+---
+import { formatType, hasPage, type Project } from "../lib/workbench";
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+const { title, type, role, description, date, url } = project.data;
+
+// Projects with a write-up are one big link to their page; projects that only
+// live elsewhere link out; the rest are plain cards.
+const href = hasPage(project) ? `/workbench/${project.id}/` : url;
+const external = !hasPage(project) && Boolean(url);
+const Card = href ? "a" : "div";
+---
+
+<li>
+	<Card
+		href={href}
+		target={external ? "_blank" : undefined}
+		rel={external ? "noopener noreferrer" : undefined}
+		data-external-icon={external ? "" : undefined}
+		class:list={["block py-5", href && "group"]}
+	>
+		<span
+			class:list={[
+				"font-serif text-lg",
+				href ? "link" : "text-ink dark:text-white",
+				external && "external-icon",
+			]}
+			>{title}</span
+		>
+		<p class="text-sm text-muted dark:text-muted-dark">{description}</p>
+		<p class="mt-1 text-xs text-muted dark:text-muted-dark">
+			<span class="tabular-nums">{date.getFullYear()}</span> ·{" "}
+			{formatType(type)} · {role}
+		</p>
+	</Card>
+</li>
