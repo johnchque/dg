@@ -4,7 +4,8 @@ import { z } from "astro/zod";
 
 // One stream for everything short-lived: text posts, reflections and photo
 // albums. Photos are read from the Markdown body by rehype-photos, so a post
-// with photos is an album and one without is text.
+// with photos is an album and one without is text. A text post without a
+// title is a short one, shown whole like a tweet.
 //
 // `date` is either a full day (2024-11-17) or just a month (2024-11) for
 // posts that shouldn't be pinned to an exact day. YAML reads the month form
@@ -14,6 +15,8 @@ const feed = defineCollection({
 	schema: z
 		.object({
 			title: z.string().optional(),
+			// A few handwritten words next to the date: a place, a mood.
+			note: z.string().optional(),
 			date: z.union([z.string().regex(/^\d{4}-\d{2}$/), z.coerce.date()]),
 		})
 		.transform(({ date, ...rest }) => {

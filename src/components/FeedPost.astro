@@ -8,47 +8,141 @@ interface Props {
 }
 
 const { post, priority } = Astro.props;
-const { href, title, date, monthOnly, photos, excerpt, readingMinutes } = post;
+const { href, title, note, date, monthOnly, photos, readingMinutes, Content } = post;
 const displayDate = formatPostDate(date, monthOnly);
+
+const kind = photos.length > 0 ? "album" : title ? "long" : "short";
 ---
 
-{
-	photos.length > 0 ? (
-		<article class="mb-16">
-			{title && (
-				<h2 class="mb-2 text-lg">
-					<a href={href} class="link">
-						{title}
-					</a>
-				</h2>
-			)}
-			<Carousel
-				href={href}
-				label={title ?? `Post from ${displayDate}`}
-				photos={photos}
-				priority={priority}
-			/>
-			<p class="mt-2 text-xs tabular-nums text-muted dark:text-muted-dark">
-				{displayDate}
-			</p>
-		</article>
-	) : (
-		// Text posts are one big link: the carousel above has its own links and
-		// buttons, so only these can be wrapped whole.
-		<article class="mb-16">
-			<a href={href} class="group block">
-				{title && (
-					<h2 class="text-lg">
-						<span class="link">{title}</span>
-					</h2>
-				)}
-				<p class="text-sm line-clamp-2 text-muted dark:text-muted-dark">
-					{excerpt}
-				</p>
-				<p class="mt-1 text-xs tabular-nums text-muted dark:text-muted-dark">
-					{displayDate} · {readingMinutes} min read
-				</p>
-			</a>
-		</article>
-	)
-}
+<article class="py-6" data-expandable={kind === "long" ? "" : undefined}>
+	{/* The date is the post's permalink, like a tweet's timestamp. */}
+	<p class="mb-1 text-xs tabular-nums text-muted dark:text-muted-dark">
+		<a href={href} class="hover:text-evening dark:hover:text-sunset">{displayDate}</a>
+		{kind === "long" && <> · {readingMinutes} min read</>}
+		{note && <span class="note">{note}</span>}
+	</p>
+	{
+		kind === "album" && (
+			<>
+				{title && <h2 class="mb-3 text-lg">{title}</h2>}
+				<Carousel
+					label={title ?? `Post from ${displayDate}`}
+					photos={photos}
+					priority={priority}
+				/>
+			</>
+		)
+	}
+	{
+		// Long posts start collapsed and expand in place.
+		kind === "long" && (
+			<>
+				<h2 class="text-lg">{title}</h2>
+				<div class="expandable post-content text-sm">
+					<Content />
+				</div>
+				<button
+					type="button"
+					class="mt-2 cursor-pointer text-xs text-muted hover:text-evening dark:text-muted-dark dark:hover:text-sunset"
+					aria-expanded="false"
+					data-toggle
+				>
+					Show more
+				</button>
+			</>
+		)
+	}
+	{
+		// Short posts are shown whole.
+		kind === "short" && (
+			<div class="post-content">
+				<Content />
+			</div>
+		)
+	}
+</article>
+
+<style>
+	/* Handwritten aside next to the date, in the same hand as the site name. */
+	.note {
+		margin-inline-start: 0.5rem;
+		font-family: var(--font-handwriting);
+		font-size: 1.125rem;
+		line-height: 1;
+		color: var(--color-evening);
+	}
+
+	:global(html.dark) .note {
+		color: var(--color-sunset);
+	}
+
+	/*
+	 * Collapsed: about four lines, fading out. The script sets the open
+	 * height in pixels so it can be transitioned; when open, the fading mask
+	 * grows past the bottom edge, so the fade eases away with it.
+	 */
+	.expandable {
+		height: 5rem;
+		overflow: hidden;
+		mask-image: linear-gradient(to bottom, black calc(100% - 3rem), transparent);
+		mask-size: 100% 100%;
+		mask-position: top;
+		mask-repeat: no-repeat;
+		cursor: pointer;
+		transition:
+			height 0.4s ease,
+			mask-size 0.4s ease;
+	}
+
+	[data-open] .expandable {
+		mask-size: 100% calc(100% + 3rem);
+		cursor: auto;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.expandable {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	for (const post of document.querySelectorAll<HTMLElement>("[data-expandable]")) {
+		const body = post.querySelector<HTMLElement>(".expandable")!;
+		const toggle = post.querySelector<HTMLButtonElement>("[data-toggle]")!;
+		const collapsedHeight = getComputedStyle(body).height;
+
+		const setOpen = (open: boolean) => {
+			post.toggleAttribute("data-open", open);
+			toggle.setAttribute("aria-expanded", String(open));
+			toggle.textContent = open ? "Show less" : "Show more";
+
+			// Heights only transition between lengths, so go from one pixel
+			// height to the other: the full text's when opening, back to the
+			// collapsed one when closing.
+			body.style.height = `${body.offsetHeight}px`;
+			body.offsetHeight; // Commit the starting height before changing it.
+			body.style.height = open ? `${body.scrollHeight}px` : collapsedHeight;
+
+			// A long post collapses from below; bring its top back into view.
+			if (!open && post.getBoundingClientRect().top < 0) {
+				post.scrollIntoView();
+			}
+		};
+
+		toggle.addEventListener("click", () => setOpen(!post.hasAttribute("data-open")));
+
+		// Clicking the collapsed text opens it too. Once open, clicks are left
+		// alone so the text can be selected; only the button closes it.
+		body.addEventListener("click", () => {
+			if (!post.hasAttribute("data-open")) setOpen(true);
+		});
+
+		// Once open, let the height follow the text (e.g. if the window is resized).
+		body.addEventListener("transitionend", (event) => {
+			if (event.propertyName === "height" && post.hasAttribute("data-open")) {
+				body.style.height = "auto";
+			}
+		});
+	}
+</script>

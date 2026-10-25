@@ -15,6 +15,6 @@ const ogImage = firstPhoto ? ogImageUrl(firstPhoto.path) : undefined;
 	description="Thoughts, reflections and photos, as they happen."
 	image={ogImage}
 >
-	<h1 class="mb-6">Feed</h1>
+	<h1 class="mb-2">Feed</h1>
 	{posts.map((post, index) => <FeedPost post={post} priority={index === 0} />)}
 </Layout>

@@ -3,13 +3,16 @@ import { getResponsiveImageAttributes } from "@imagekit/javascript";
 import type { Photo } from "../lib/feed";
 
 interface Props {
-	href: string;
+	// Each photo links here when given; otherwise the photos aren't links.
+	href?: string;
 	label: string;
 	photos: Photo[];
 	priority?: boolean;
 }
 
 const { href, label, photos, priority } = Astro.props;
+
+const Wrapper = href ? "a" : "div";
 
 const urlEndpoint = import.meta.env.IMAGEKIT_URL_ENDPOINT;
 
@@ -45,7 +48,11 @@ const icons = {
 		{
 			slides.map((slide, index) => (
 				<li class="h-full w-full shrink-0 snap-start">
-					<a href={href} class="block h-full" tabindex={index === 0 ? undefined : -1}>
+					<Wrapper
+						href={href}
+						class="block h-full"
+						tabindex={href && index !== 0 ? -1 : undefined}
+					>
 						<img
 							src={slide.src}
 							srcset={slide.srcSet}
@@ -58,7 +65,7 @@ const icons = {
 							decoding="async"
 							class="h-full w-full object-cover"
 						/>
-					</a>
+					</Wrapper>
 				</li>
 			))
 		}

@@ -9,15 +9,18 @@ export interface Photo {
 	height: number;
 }
 
+type Rendered = Awaited<ReturnType<typeof render>>;
+
 export interface FeedPost {
 	id: string;
 	href: string;
 	title?: string;
+	note?: string;
 	date: Date;
 	monthOnly: boolean;
 	photos: Photo[];
-	excerpt: string;
 	readingMinutes: number;
+	Content: Rendered["Content"];
 }
 
 export function formatPostDate(date: Date, monthOnly: boolean): string {
@@ -32,21 +35,6 @@ function sortKey(post: FeedPost): number {
 	return new Date(date.getFullYear(), date.getMonth() + 1, 1).valueOf() - 1;
 }
 
-// The feed clamps text to three lines in CSS; this only keeps long
-// reflections from shipping their whole body into the feed's HTML.
-const EXCERPT_LENGTH = 400;
-
-function excerpt(markdown: string): string {
-	return markdown
-		.replace(/!\[[^\]]*\]\([^)]*\)/g, "")
-		.replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-		.replace(/^#+\s+/gm, "")
-		.replace(/[*_`>]/g, "")
-		.replace(/\s+/g, " ")
-		.trim()
-		.slice(0, EXCERPT_LENGTH);
-}
-
 // At a relaxed ~200 words a minute, never less than one.
 function readingMinutes(markdown: string): number {
 	const words = markdown.split(/\s+/).filter(Boolean).length;
@@ -58,16 +46,17 @@ export async function getFeedPosts(): Promise<FeedPost[]> {
 
 	const posts = await Promise.all(
 		entries.map(async (entry) => {
-			const { remarkPluginFrontmatter } = await render(entry);
+			const { Content, remarkPluginFrontmatter } = await render(entry);
 			return {
 				id: entry.id,
 				href: `/feed/${entry.id}/`,
 				title: entry.data.title,
+				note: entry.data.note,
 				date: entry.data.date,
 				monthOnly: entry.data.monthOnly,
 				photos: (remarkPluginFrontmatter.photos ?? []) as Photo[],
-				excerpt: excerpt(entry.body ?? ""),
 				readingMinutes: readingMinutes(entry.body ?? ""),
+				Content,
 			};
 		}),
 	);
