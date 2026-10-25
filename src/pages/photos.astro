@@ -1,34 +1,33 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import PhotoCard from "../components/PhotoCard.astro";
+import AlbumPost from "../components/AlbumPost.astro";
 import { ogImageUrl } from "../lib/imagekit";
 
 const albums = await getCollection("albums");
+albums.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const photosByAlbum = await Promise.all(
-	albums.map(async (album) => {
-		const { remarkPluginFrontmatter } = await render(album);
-		const albumPhotos = (remarkPluginFrontmatter.photos ?? []) as Array<{
-			path: string;
-			alt: string;
-			caption?: string;
-			width: number;
-			height: number;
-		}>;
-		return albumPhotos.map((photo) => ({
-			...photo,
-			date: album.data.date,
-			albumSlug: album.id,
-			albumTitle: album.data.title,
-		}));
-	}),
-);
+const posts = (
+	await Promise.all(
+		albums.map(async (album) => {
+			const { remarkPluginFrontmatter } = await render(album);
+			const photos = (remarkPluginFrontmatter.photos ?? []) as Array<{
+				path: string;
+				alt: string;
+				width: number;
+				height: number;
+			}>;
+			return {
+				href: `/albums/${album.id}/`,
+				title: album.data.title,
+				date: album.data.date,
+				photos,
+			};
+		}),
+	)
+).filter((post) => post.photos.length > 0);
 
-const photos = photosByAlbum.flat();
-photos.sort((a, b) => b.date.valueOf() - a.date.valueOf());
-
-const ogImage = photos[0] ? ogImageUrl(photos[0].path) : undefined;
+const ogImage = posts[0] ? ogImageUrl(posts[0].photos[0].path) : undefined;
 ---
 
 <Layout
@@ -37,16 +36,5 @@ const ogImage = photos[0] ? ogImageUrl(photos[0].path) : undefined;
 	image={ogImage}
 >
 	<h1 class="mb-6">Photos</h1>
-	{
-		photos.map((photo, index) => (
-			<PhotoCard
-				src={photo.path}
-				alt={photo.alt}
-				caption={photo.caption}
-				width={photo.width}
-				height={photo.height}
-				priority={index === 0}
-			/>
-		))
-	}
+	{posts.map((post, index) => <AlbumPost {...post} priority={index === 0} />)}
 </Layout>

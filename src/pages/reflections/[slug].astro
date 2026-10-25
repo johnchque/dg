@@ -19,15 +19,13 @@ const { Content } = await render(reflection);
 	title={reflection.data.title}
 	description={reflection.data.description ??
 		`A reflection: ${reflection.data.title}.`}
-	spacious
 >
+	<GardenMeta
+		status={reflection.data.status}
+		updatedAt={reflection.data.updatedAt}
+	/>
 	<h1 class="mb-16">{reflection.data.title}</h1>
 	<div class="post-content">
 		<Content />
 	</div>
-	<GardenMeta
-		status={reflection.data.status}
-		createdAt={reflection.data.createdAt}
-		updatedAt={reflection.data.updatedAt}
-	/>
 </Layout>

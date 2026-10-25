@@ -81,15 +81,10 @@
     /*
      * Photos bleed past the text column on the right only (left edge stays
      * flush with the text) — out to flush with <main>'s own outer edge,
-     * using its existing p-4/md:p-6/lg:p-8 scale rather than a new constant,
+     * using its existing md:p-6/lg:p-8 scale rather than a new constant,
      * so the bleed always matches the page's real gutter at every
-     * breakpoint.
+     * breakpoint. On mobile photos stay inside the text column.
      */
-    .bleed {
-        width: calc(100% + 1rem);
-        margin-inline-end: -1rem;
-    }
-
     @media (min-width: 48rem) {
         .bleed {
             width: calc(100% + 1.5rem);

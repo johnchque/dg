@@ -6,10 +6,8 @@ interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
-	// Extra breathing room above the content — the home page and individual
-	// markdown entries (essays/explorations/reflections/albums), not the
-	// section listing pages (/essays/, /garden/, /photos/, etc.).
-	spacious?: boolean;
+	// Less breathing room above the content, for pages that need it.
+	compact?: boolean;
 }
 
 const siteName = "John Choque";
@@ -20,7 +18,7 @@ const {
 	title,
 	description = defaultDescription,
 	image = "/og-default.png",
-	spacious = false,
+	compact = false,
 } = Astro.props;
 const pageTitle = title ? `${title} · ${siteName}` : siteName;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -135,7 +133,7 @@ const ogImageURL = new URL(image, Astro.site);
 			</nav>
 		</header>
 		<main
-			class={`max-w-xl p-4 md:p-6 lg:p-8 ${spacious ? "pt-52 md:pt-52 lg:pt-64" : "pt-28 md:pt-28 lg:pt-32"}`}
+			class={`max-w-xl p-4 md:p-6 lg:p-8 ${compact ? "pt-28 md:pt-28 lg:pt-32" : "pt-52 md:pt-52 lg:pt-64"}`}
 		>
 			<slot />
 		</main>

@@ -2,9 +2,11 @@
 interface Props {
 	status: "seedling" | "budding" | "evergreen";
 	showLabel?: boolean;
+	// Spell out what the status means, instead of hiding it in a tooltip.
+	describe?: boolean;
 }
 
-const { status, showLabel = true } = Astro.props;
+const { status, showLabel = true, describe = false } = Astro.props;
 
 const labels: Record<Props["status"], string> = {
 	seedling: "Seedling",
@@ -31,10 +33,11 @@ const icons: Record<Props["status"], string> = {
 
 <span
 	class="inline-flex align-middle items-center gap-1 text-sm"
-	title={titles[status]}
+	title={describe ? undefined : titles[status]}
 >
 	<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
 		<path d={icons[status]}></path>
 	</svg>
 	{showLabel && labels[status]}
+	{describe && <span class="opacity-75">· {titles[status]}</span>}
 </span>

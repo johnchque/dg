@@ -18,15 +18,13 @@ const { Content } = await render(essay);
 <Layout
 	title={essay.data.title}
 	description={essay.data.description ?? `An essay: ${essay.data.title}.`}
-	spacious
 >
+	<GardenMeta
+		status={essay.data.status}
+		updatedAt={essay.data.updatedAt}
+	/>
 	<h1 class="mb-16">{essay.data.title}</h1>
 	<div class="post-content">
 		<Content />
 	</div>
-	<GardenMeta
-		status={essay.data.status}
-		createdAt={essay.data.createdAt}
-		updatedAt={essay.data.updatedAt}
-	/>
 </Layout>

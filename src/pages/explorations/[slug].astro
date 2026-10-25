@@ -19,15 +19,13 @@ const { Content } = await render(exploration);
 	title={exploration.data.title}
 	description={exploration.data.description ??
 		`An exploration: ${exploration.data.title}.`}
-	spacious
 >
+	<GardenMeta
+		status={exploration.data.status}
+		updatedAt={exploration.data.updatedAt}
+	/>
 	<h1 class="mb-16">{exploration.data.title}</h1>
 	<div class="post-content">
 		<Content />
 	</div>
-	<GardenMeta
-		status={exploration.data.status}
-		createdAt={exploration.data.createdAt}
-		updatedAt={exploration.data.updatedAt}
-	/>
 </Layout>
