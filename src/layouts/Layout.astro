@@ -141,6 +141,21 @@ const ogImageURL = new URL(image, Astro.site);
 					localStorage.setItem("theme", isDark ? "dark" : "light");
 				});
 		</script>
+		<script>
+			// YouTube facade (from rehype-videos): swap the still for the real
+			// player only when it's clicked, and start it playing.
+			for (const button of document.querySelectorAll<HTMLButtonElement>("[data-youtube]")) {
+				button.addEventListener("click", () => {
+					const iframe = document.createElement("iframe");
+					iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.youtube}?autoplay=1`;
+					iframe.title = "YouTube video";
+					iframe.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+					iframe.allowFullscreen = true;
+					iframe.className = "aspect-video w-full rounded-xl";
+					button.replaceWith(iframe);
+				});
+			}
+		</script>
 	</body>
 </html>
 

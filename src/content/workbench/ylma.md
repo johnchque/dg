@@ -7,39 +7,43 @@ role: "Writer, director & editor"
 with: "Vishay Khxl"
 ---
 
-<https://www.youtube.com/watch?v=fJiCSoap1Vg>
+<https://www.youtube.com/watch?v=fJiCSoap1Vg#wide>
 
-*You Love My Arrogance.* Part of *Maturity is a Scam*, an album by Vishay Khxl.
+Vishay Khxl had a song from his album *Maturity is a Scam* and wanted a video for it. We sparred ideas back and forth until we landed on this concept: Vishay plays two versions of himself, the real one and a macho-influencer alter ego.
 
-I wrote the full narrative and directed the video. Vishay Khxl plays two versions of himself — the video opens with one of them getting punched and falling to the floor. You don't know who did it yet.
+I wrote the full narrative and directed the video. It opens with one of them getting punched and falling to the floor. You don't know who did it yet.
+
+## Why the alter ego
+
+I wanted people to see these macho influencers for what they are: insecure men who never really look at their own behavior. They live off other men's insecurities, and the answer they sell is more macho behavior. The alter ego takes himself completely seriously, and that's the joke.
 
 ## Story
 
-The alter ego has a bandana. He does the full Ashton Hall morning routine — cold water, washing teeth — and caps it off with 30 minutes staring at himself in the mirror wearing fake iron teeth. Played completely straight.
+The alter ego wears a bandana and follows the full Ashton Hall morning routine. He dips his face in cold water, brushes his teeth, and then spends 30 minutes staring at himself in the mirror with fake iron teeth on. We played all of it seriously, as if it made total sense.
 
 <https://ik.imagekit.io/johnchque/website/projects/ylma/ylma_1.mp4>
 
-The two of them end up at the same party. I shot a beer pong scene where they appear to play against each other using camera blocking and cuts, no split screen. The alter ego loses, sweeps the cups off the table.
+Later, both of them end up at the same party and play beer pong against each other. There is no split screen, it is all camera blocking and cuts. The alter ego loses and angrily sweeps the cups off the table.
 
 <https://ik.imagekit.io/johnchque/website/projects/ylma/ylma_2.mp4>
 
-Vishay Khxl is just having a good time. The alter ego punches him. Cut back to the opening shot. I wanted an open ending — no resolution, just the loop. People can sit with that.
+Meanwhile, Vishay is just having a good time. The alter ego walks up and punches him, and we are back at the opening shot. I wanted the ending to stay open. Nothing gets resolved, the story just loops back to where it started, and I like leaving that for people to think about.
 
 ## Production
 
-Three sessions over three weeks in Copenhagen on a Sony A7 III with a 28-70mm kit lens, shooting in raw. Supporting cast of extras. No crew, no formal training — I figured it out as we went.
+We shot it in Copenhagen over three sessions in three weeks. I used a Sony A7 III with the 28-70mm kit lens and recorded everything in raw. Some friends joined as extras for the party scenes. There was no crew and I have no formal training, so I figured things out as we went.
 
-For the beer pong and fight scenes we recorded each side separately — first one Vishay, then the other, with different clothing — and cut between them with fast edits to sell the illusion. No special effects. Edited in Kdenlive.
+For the beer pong and fight scenes, we recorded each side separately. First we filmed one Vishay, then he changed clothes and we filmed the other. In the edit, I cut between them quickly so it looks like two people in the same room, without any special effects. I edited everything in Kdenlive.
 
 ![Kdenlive editing timeline](https://ik.imagekit.io/johnchque/website/projects/ylma/ylma_3.png?width=1920&height=1140)
+
+## After
+
+It got around 7,000 views. It was mostly a fun project, but it was also my first video with a full cast and a script.
+
+I learned so much about editing and camera angles. Showing the same person fighting himself without CGI or effects meant planning every shot around the cut. It also taught me how to direct: explaining to people what I need from them and getting everyone to work together.
 
 ## Credits
 
 - **Artist** — Vishay Khxl
-- **Director, Camera & Edit** — John Choque
-- **Camera** — Sony A7 III
-- **Lens** — Sony FE 28-70mm f/3.5-5.6
-- **Format** — Raw
-- **Edit** — Kdenlive
-- **Location** — Copenhagen, Denmark
-- **Year** — 2025
+- **Writer, director, camera & edit** — John Choque

@@ -100,6 +100,24 @@
     }
 
     /*
+     * Wider still, for the one photo or video that should lead a page
+     * (marked `#wide` in its Markdown URL): out to the header's right edge,
+     * where the theme toggle sits. The header is max-w-4xl with the same
+     * p-6/lg:p-8 gutters as <main>.
+     */
+    @media (min-width: 48rem) {
+        .wide {
+            width: calc(min(56rem, 100vw) - 3rem);
+        }
+    }
+
+    @media (min-width: 64rem) {
+        .wide {
+            width: calc(min(56rem, 100vw) - 4rem);
+        }
+    }
+
+    /*
      * External-link arrow. A link wrapping a whole card opts out with
      * data-external-icon and puts the arrow on a child (e.g. its title)
      * instead, so it doesn't land under the card's last line.

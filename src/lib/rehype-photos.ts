@@ -49,6 +49,10 @@ export function rehypePhotos() {
 			const height = Number(heightParam);
 			url.searchParams.delete("width");
 			url.searchParams.delete("height");
+			// `#wide` at the end of the URL makes the photo run out to the
+			// header's edge on desktop (see .wide in global.css).
+			const wide = url.hash === "#wide";
+			url.hash = "";
 			const cleanSrc = url.toString();
 
 			const priority = photoIndex === 0;
@@ -57,7 +61,7 @@ export function rehypePhotos() {
 			const { src, srcSet, sizes } = getResponsiveImageAttributes({
 				src: cleanSrc,
 				urlEndpoint,
-				sizes: "(min-width: 42rem) 42rem, 100vw",
+				sizes: wide ? "(min-width: 56rem) 56rem, 100vw" : "(min-width: 42rem) 42rem, 100vw",
 				deviceBreakpoints: [640, 828, 1080, 1280],
 				imageBreakpoints: [],
 			});
@@ -66,7 +70,7 @@ export function rehypePhotos() {
 
 			parent.children[index] = h(
 				"figure",
-				{ class: "mb-10 bleed" },
+				{ class: wide ? "my-10 wide" : "my-10" },
 				h("img", {
 					src,
 					srcSet,

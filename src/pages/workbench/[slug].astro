@@ -29,21 +29,29 @@ const facts = [
 <Layout title={title} description={description} image={ogImage}>
 	<a
 		href="/workbench/"
-		class="mb-6 inline-block text-sm text-muted hover:text-evening dark:text-muted-dark dark:hover:text-sunset"
+		class="group relative mb-6 inline-block text-sm text-muted hover:text-evening dark:text-muted-dark dark:hover:text-sunset"
 	>
-		← Workbench
+		{/* On hover the label slides right and the arrow fades in where it was. */}
+		<span
+			aria-hidden="true"
+			class="absolute left-0 -translate-x-1 opacity-0 transition duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:transition-none"
+			>←</span
+		>
+		<span
+			class="inline-block transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:transition-none"
+			>Workbench</span
+		>
 	</a>
 	<h1 class="mb-3">{title}</h1>
 	<p class="mb-8 text-muted dark:text-muted-dark">{description}</p>
-	<dl
-		class="mb-16 grid grid-cols-2 gap-x-6 gap-y-4 border-y border-black/10 py-4 sm:grid-flow-col sm:grid-cols-none dark:border-white/10"
-	>
+	{/* Label and value side by side, one fact per row, like a film's credits. */}
+	<dl class="mb-12 grid grid-cols-[5rem_1fr] gap-y-1.5 text-sm">
 		{
 			facts.map(([label, value]) => (
-				<div>
-					<dt class="mb-1 text-xs text-muted dark:text-muted-dark">{label}</dt>
-					<dd class="text-sm">{value}</dd>
-				</div>
+				<>
+					<dt class="text-muted dark:text-muted-dark">{label}</dt>
+					<dd>{value}</dd>
+				</>
 			))
 		}
 	</dl>
@@ -51,3 +59,4 @@ const facts = [
 		<Content />
 	</div>
 </Layout>
+
