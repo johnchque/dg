@@ -32,6 +32,10 @@ const gardenSchema = z.object({
 	updatedAt: z.coerce.date(),
 	status: z.enum(["seedling", "budding", "evergreen"]).default("seedling"),
 	description: z.string().optional(),
+	// Shown above the garden list as what's top of mind, instead of in it.
+	pinned: z.boolean().default(false),
+	// An ImageKit URL for the essay's thumbnail in the garden list.
+	image: z.string().optional(),
 });
 
 const essays = defineCollection({
@@ -43,7 +47,6 @@ const notes = defineCollection({
 	loader: glob({ pattern: "**/*.md", base: "./src/content/notes" }),
 	schema: gardenSchema,
 });
-
 // Projects of every kind (startups, organizations, videos, books, comics).
 // A project with a Markdown body gets its own page; one without is just a
 // line on /workbench.

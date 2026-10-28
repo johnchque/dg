@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
 import { rehypePhotos } from './src/lib/rehype-photos.ts';
 import { rehypeVideos } from './src/lib/rehype-videos.ts';
+import { rehypeWikilinks } from './src/lib/rehype-wikilinks.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,14 +18,15 @@ export default defineConfig({
     '/albums': '/feed',
     '/albums/copenhagen-2024': '/feed/copenhagen-2024',
     '/reflections': '/feed',
-    '/reflections/to-write-again': '/feed/to-write-again'
+    '/reflections/to-write-again': '/feed/to-write-again',
+    '/essays/2019-08-17-a-blurry-past': '/feed/2021-07-11-a-blurry-past'
   },
   markdown: {
     // Astro 7 defaults to the native Sätteri processor; staying on the
     // classic unified/remark/rehype pipeline here since rehype-photos.ts
     // and rehype-videos.ts do non-trivial AST work (paragraph->figure rewriting) and Sätteri's
     // own plugin API/porting docs are still new.
-    processor: unified({ rehypePlugins: [rehypePhotos, rehypeVideos] })
+    processor: unified({ rehypePlugins: [rehypeWikilinks, rehypePhotos, rehypeVideos] })
   },
   vite: {
     plugins: [tailwindcss()]

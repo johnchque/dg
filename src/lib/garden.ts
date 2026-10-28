@@ -15,11 +15,17 @@ export function formatMonth(date: Date): string {
 	return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 }
 
+export type GardenType = "essay" | "note";
+
 export interface GardenEntry {
+	type: GardenType;
 	href: string;
 	title: string;
+	description?: string;
 	status: "seedling" | "budding" | "evergreen";
 	updatedAt: Date;
+	pinned: boolean;
+	image?: string;
 }
 
 export async function getGardenEntries(): Promise<GardenEntry[]> {
@@ -28,19 +34,25 @@ export async function getGardenEntries(): Promise<GardenEntry[]> {
 		getCollection("notes"),
 	]);
 
-	const entries: GardenEntry[] = [
-		...essays.map((entry) => ({
-			href: `/essays/${entry.id}/`,
+	const toEntries = (
+		type: GardenType,
+		base: string,
+		collection: typeof essays,
+	): GardenEntry[] =>
+		collection.map((entry) => ({
+			type,
+			href: `/${base}/${entry.id}/`,
 			title: entry.data.title,
+			description: entry.data.description,
 			status: entry.data.status,
 			updatedAt: entry.data.updatedAt,
-		})),
-		...notes.map((entry) => ({
-			href: `/notes/${entry.id}/`,
-			title: entry.data.title,
-			status: entry.data.status,
-			updatedAt: entry.data.updatedAt,
-		})),
+			pinned: entry.data.pinned,
+			image: entry.data.image,
+		}));
+
+	const entries = [
+		...toEntries("essay", "essays", essays),
+		...toEntries("note", "notes", notes),
 	];
 
 	entries.sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf());

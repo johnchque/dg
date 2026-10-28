@@ -1,9 +1,6 @@
 ---
 title: "A blurry past"
-createdAt: 2021-07-11
-updatedAt: 2-07-11
-status: "evergreen"
-description: "On choosing to host my own writing and photos instead of renting space from a platform."
+date: 2021-07-11
 ---
 
 I never knew the words to say when I needed help. It wasn’t until I became an adult that I could say that I was broken.

@@ -1,9 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import GardenItem from "../../components/GardenItem.astro";
 import GardenList from "../../components/GardenList.astro";
+import StatusBadge from "../../components/StatusBadge.astro";
 import { getGardenEntries } from "../../lib/garden";
 
 const gardenEntries = await getGardenEntries();
+const pinned = gardenEntries.filter((entry) => entry.pinned);
+const rest = gardenEntries.filter((entry) => !entry.pinned);
 ---
 
 <Layout
@@ -11,5 +15,39 @@ const gardenEntries = await getGardenEntries();
 	description="Essays and notes, sorted by when they were last touched — published as they grow, not once they're finished."
 >
 	<h1 class="mb-6">Garden</h1>
-	<GardenList entries={gardenEntries} />
+
+	<ul class="mb-10 list-none space-y-1 text-muted dark:text-muted-dark">
+		<li><StatusBadge status="seedling" describe /></li>
+		<li><StatusBadge status="budding" describe /></li>
+		<li><StatusBadge status="evergreen" describe /></li>
+	</ul>
+
+	{
+		pinned.length > 0 && (
+			<section class="mb-10">
+				<h2 class="top-of-mind">Top of mind</h2>
+				<ul class="list-none">
+					{pinned.map((entry) => (
+						<GardenItem entry={entry} />
+					))}
+				</ul>
+			</section>
+		)
+	}
+
+	<GardenList entries={rest} />
 </Layout>
+
+<style>
+	/* A handwritten heading, in the same hand as the site name. */
+	.top-of-mind {
+		font-family: var(--font-handwriting);
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--color-evening);
+	}
+
+	:global(html.dark) .top-of-mind {
+		color: var(--color-sunset);
+	}
+</style>

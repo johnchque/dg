@@ -1,0 +1,88 @@
+---
+import { buildSrc } from "@imagekit/javascript";
+import StatusBadge from "./StatusBadge.astro";
+import { formatDate, type GardenEntry } from "../lib/garden";
+
+interface Props {
+	entry: GardenEntry;
+}
+
+const { entry } = Astro.props;
+
+const labels: Record<GardenEntry["type"], string> = {
+	essay: "Essay",
+	note: "Note",
+};
+
+// Only essays get a thumbnail, so they carry more weight than notes.
+const thumbnail =
+	entry.type === "essay" && entry.image
+		? buildSrc({
+				src: entry.image,
+				urlEndpoint: import.meta.env.IMAGEKIT_URL_ENDPOINT,
+				transformation: [{ width: 144, height: 144 }],
+			})
+		: undefined;
+---
+
+<li class="flex items-baseline gap-4 border-b border-black/10 py-3 dark:border-white/10">
+	{
+		thumbnail && (
+			<img
+				src={thumbnail}
+				alt=""
+				width="72"
+				height="72"
+				loading="lazy"
+				decoding="async"
+				class="size-18 shrink-0 self-center rounded-lg object-cover"
+			/>
+		)
+	}
+	<div>
+		<p class="mb-0.5 text-xs text-muted dark:text-muted-dark">{labels[entry.type]}</p>
+		<a
+			href={entry.href}
+			class:list={["link", entry.type === "essay" && "font-serif text-lg"]}
+		>
+			{entry.title}
+		</a>
+		{
+			entry.description && (
+				<p class="mt-0.5 text-sm text-muted dark:text-muted-dark">
+					{entry.description}
+				</p>
+			)
+		}
+	</div>
+	<span class="ml-auto text-muted dark:text-muted-dark">
+		<StatusBadge status={entry.status} showLabel={false} />
+	</span>
+	{/* The absolute date is the fallback; the script below makes it relative. */}
+	<time
+		datetime={entry.updatedAt.toISOString()}
+		title={`Tended ${formatDate(entry.updatedAt)}`}
+		class="shrink-0 text-sm tabular-nums text-muted dark:text-muted-dark"
+		data-relative
+	>
+		{formatDate(entry.updatedAt, false)}
+	</time>
+</li>
+
+<script>
+	// Relative dates are worked out in the browser, so "3 weeks ago" stays
+	// true between builds.
+	const format = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+	const units: [Intl.RelativeTimeFormatUnit, number][] = [
+		["year", 365],
+		["month", 30],
+		["week", 7],
+		["day", 1],
+	];
+
+	for (const time of document.querySelectorAll<HTMLTimeElement>("time[data-relative]")) {
+		const days = Math.round((new Date(time.dateTime).valueOf() - Date.now()) / 86_400_000);
+		const [unit, size] = units.find(([, size]) => Math.abs(days) >= size) ?? ["day", 1];
+		time.textContent = format.format(Math.round(days / size), unit);
+	}
+</script>
