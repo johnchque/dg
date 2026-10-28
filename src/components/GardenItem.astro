@@ -25,7 +25,7 @@ const thumbnail =
 		: undefined;
 ---
 
-<li class="flex items-baseline gap-4 border-b border-black/10 py-3 dark:border-white/10">
+<li class="flex items-baseline gap-4 py-6">
 	{
 		thumbnail && (
 			<img
@@ -43,7 +43,7 @@ const thumbnail =
 		<p class="mb-0.5 text-xs text-muted dark:text-muted-dark">{labels[entry.type]}</p>
 		<a
 			href={entry.href}
-			class:list={["link", entry.type === "essay" && "font-serif text-lg"]}
+			class="link font-serif text-lg"
 		>
 			{entry.title}
 		</a>

@@ -1,0 +1,58 @@
+---
+import { formatDate, type GardenEntry } from "../lib/garden";
+
+interface Props {
+	entries: GardenEntry[];
+	limit?: number;
+}
+
+const { entries, limit = 6 } = Astro.props;
+
+// Every entry was planted once and maybe tended since; together, newest
+// first, those are what has been happening in the garden.
+const events = entries
+	.flatMap((entry) => [
+		{ verb: "planted", date: entry.createdAt, entry },
+		...(entry.updatedAt.valueOf() > entry.createdAt.valueOf()
+			? [{ verb: "tended", date: entry.updatedAt, entry }]
+			: []),
+	])
+	.sort((a, b) => b.date.valueOf() - a.date.valueOf())
+	.slice(0, limit);
+---
+
+<aside aria-labelledby="tending-log">
+	<h2 id="tending-log" class="tending-heading">Lately in the garden</h2>
+	<ol class="mt-2 list-none space-y-2 text-xs">
+		{
+			events.map(({ verb, date, entry }) => (
+				<li>
+					<span class="text-muted dark:text-muted-dark">{verb}</span>{" "}
+					<a href={entry.href} class="link">{entry.title}</a>{" "}
+					<time
+						datetime={date.toISOString()}
+						title={formatDate(date)}
+						class="whitespace-nowrap text-muted dark:text-muted-dark"
+						data-relative
+					>
+						{formatDate(date, false)}
+					</time>
+				</li>
+			))
+		}
+	</ol>
+</aside>
+
+<style>
+	/* A handwritten heading, in the same hand as the site name. */
+	.tending-heading {
+		font-family: var(--font-handwriting);
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--color-evening);
+	}
+
+	:global(html.dark) .tending-heading {
+		color: var(--color-sunset);
+	}
+</style>

@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import GardenItem from "../../components/GardenItem.astro";
 import GardenList from "../../components/GardenList.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
+import TendingLog from "../../components/TendingLog.astro";
 import { getGardenEntries } from "../../lib/garden";
 
 const gardenEntries = await getGardenEntries();
@@ -16,29 +17,51 @@ const rest = gardenEntries.filter((entry) => !entry.pinned);
 >
 	<h1 class="mb-6">Garden</h1>
 
-	<ul class="mb-10 list-none space-y-1 text-muted dark:text-muted-dark">
-		<li><StatusBadge status="seedling" describe /></li>
-		<li><StatusBadge status="budding" describe /></li>
-		<li><StatusBadge status="evergreen" describe /></li>
-	</ul>
+	<div class="relative">
+		{
+			/*
+			 * On wide screens the log sits in the empty space right of the
+			 * column, flush with the theme toggle, and stays in view while the
+			 * list scrolls; on narrow ones it comes first, inline.
+			 */
+		}
+		<div
+			class="log-rail mb-10 lg:absolute lg:top-0 lg:mb-0 lg:h-full lg:w-60 lg:text-right"
+		>
+			<div class="lg:sticky lg:top-36">
+				<TendingLog entries={gardenEntries} />
+			</div>
+		</div>
 
-	{
-		pinned.length > 0 && (
-			<section class="mb-10">
-				<h2 class="top-of-mind">Top of mind</h2>
-				<ul class="list-none">
-					{pinned.map((entry) => (
-						<GardenItem entry={entry} />
-					))}
-				</ul>
-			</section>
-		)
-	}
+		{
+			pinned.length > 0 && (
+				<section class="mb-10">
+					<h2 class="top-of-mind">Top of mind</h2>
+					<ul class="list-none">
+						{pinned.map((entry) => (
+							<GardenItem entry={entry} />
+						))}
+					</ul>
+				</section>
+			)
+		}
 
-	<GardenList entries={rest} />
+		<GardenList entries={rest} />
+	</div>
 </Layout>
 
 <style>
+	/*
+	 * Right edge flush with the header's (where the theme toggle sits): the
+	 * header is max-w-4xl with lg:p-8 gutters, the same reach as .wide in
+	 * global.css, minus the log's own w-60.
+	 */
+	@media (min-width: 64rem) {
+		.log-rail {
+			left: calc(min(56rem, 100vw) - 4rem - 15rem);
+		}
+	}
+
 	/* A handwritten heading, in the same hand as the site name. */
 	.top-of-mind {
 		font-family: var(--font-handwriting);

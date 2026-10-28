@@ -23,6 +23,7 @@ export interface GardenEntry {
 	title: string;
 	description?: string;
 	status: "seedling" | "budding" | "evergreen";
+	createdAt: Date;
 	updatedAt: Date;
 	pinned: boolean;
 	image?: string;
@@ -45,6 +46,7 @@ export async function getGardenEntries(): Promise<GardenEntry[]> {
 			title: entry.data.title,
 			description: entry.data.description,
 			status: entry.data.status,
+			createdAt: entry.data.createdAt,
 			updatedAt: entry.data.updatedAt,
 			pinned: entry.data.pinned,
 			image: entry.data.image,
